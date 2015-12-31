@@ -1,10 +1,32 @@
-<section class="animated fadeIn pageLoadControl">
+<style>
+    .printOrder {
+        float: left;
+        position: relative;
+        top: 5px;
+        font-size: 2em;
+        color: #bbb !important;        
+    }
+    
+    .printOrder:hover {
+        color: #777 !important;
+    }
+    
+    .continueShoppingButton {
+        padding: 30px 10px;
+    }
+    
+    .hidePricing {
+        background-color: #fff;
+        position: relative;
+        bottom: 31px;
+    }
+    
+    
+</style>
+<section class="animated fadeIn pageLoadControl cartAside">
     <div ng-show="currentOrder" class="hidden-print">
         <nav class="nav">
-            <ul>
-                <li><span class="text-primary">{{'Cart' | r | xlat}}</span></li>
-                <li class="pull-right" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}" ></i></span></li>
-            </ul>
+        <div class="cartHeading">{{currentOrder.LineItems.length}} {{'item' + (currentOrder.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in your' | rl | xlat:(currentOrder.LineItems.length)}} {{'cart' | rl | xlat}}</div>
         </nav>
         
 		<!--<div ng-show="user.Permissions.contains('Comments')">Comments: <input type="text" ng-model="currentOrder.Comments"> <br></div>-->
@@ -17,11 +39,13 @@
                 <cartmessage />
             </div>
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        {{currentOrder.LineItems.length}} {{'item' + (currentOrder.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in your' | rl | xlat:(currentOrder.LineItems.length)}} {{'cart' | rl | xlat}}
-                    </h3>
-                </div>
+                <!--
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            {{currentOrder.LineItems.length}} {{'item' + (currentOrder.LineItems.length > 1 ? 's' : '') | rl | xlat}} {{'in your' | rl | xlat:(currentOrder.LineItems.length)}} {{'cart' | rl | xlat}}
+                        </h3>
+                    </div>
+                -->
                 <div class="panel-lineitem" ng-repeat="item in currentOrder.LineItems">
                     <button type="button" title="Remove Item" class="btn btn-danger deleteItem" ng-click="removeItem(item)">
                         <span class="fa fa-minus-circle fa-inverse"></span>
@@ -33,12 +57,12 @@
                                     <quantityfield required="true" lineitem="item" class="quantity"/>
                                 </div>
                                 <p class="quantity-total text-center">
-                                    <small>{{'Total Quantity' | r | xlat}} <span ng-show="item.Quantity * item.Product.QuantityMultiplier">{{item.Quantity * item.Product.QuantityMultiplier}}</span></small>
+                                    <h4>{{'Total Quantity' | r | xlat}} <span ng-show="item.Quantity * item.Product.QuantityMultiplier">{{item.Quantity * item.Product.QuantityMultiplier}}</span></h4>
                                 </p>
                             </div>
-                            <div class="col-xs-6 col-sm-12 col-md-6 thumbnail" ng-show="item.Variant.LargeImageUrl || item.Product.SmallImageUrl">
+                            <div class="col-xs-6 col-sm-12 col-md-6 thumbnail" ng-show="item.Product.LargeImageUrl">
                                 <figure>
-                                    <img ng-src="{{item.Variant.LargeImageUrl || item.Product.SmallImageUrl}}" />
+                                    <img ng-src="{{item.Product.LargeImageUrl}}" />
                                 </figure>
                             </div>
                         </div>
@@ -68,17 +92,18 @@
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <div ng-if="!(user.Permissions.contains('HidePricing'))">
-                                            <small>{{'Total' | r | xlat}}</small>
-                                            <h2 class="text-success">
+                                            <h4>{{'Total' | r | xlat}}</h4>
+                                            <h2 class="text-success">$0.00</h2>
+                                            <h2 class="text-success hidePricing">
                                                 {{item.LineTotal | culturecurrency}}
                                             </h2>
                                         </div>
                                     </div>
                                     <div class="col-xs-6" ng-if="!(user.Permissions.contains('HidePricing'))">
                                         <p>
-                                            <small>{{'Unit Price' | r | xlat}}</small>
-                                            <br/>
-                                            {{item.UnitPrice | culturecurrency}}
+                                            <h4>{{'Unit Price' | r | xlat}}</h4>
+                                            <h2 class="text-success">$0.00</h2>
+                                            <h2 class="text-success hidePricing">{{item.UnitPrice | culturecurrency}}</h2>
                                         </p>
                                     </div>
                                 </div>
@@ -132,10 +157,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-12">
-                                <button type="button" class="btn btn-default" ng-show="item.SpecsLength > 0" ng-init="toggleSpecs = false" ng-click="toggleSpecs = !toggleSpecs">
-                                    <span ng-show="toggleSpecs == false"><i class="fa fa-plus-circle"></i> {{('Show' | r) + ' ' + ('Specification' | r) | xlat}}</span>
-                                    <span ng-show="toggleSpecs == true"><i class="fa fa-minus-circle"></i> {{('Hide' | r) + ' ' + ('Specification' | r) | xlat}}</span>
-                                </button>
+
                                 <ul ng-show="toggleSpecs == true" class="list-group">
                                     <li ng-repeat="spec in item.Specs | filter:{'CanSetForLineItem':true} " class="list-group-item">
                                         <span class="text-info">{{spec.Label || spec.Name}}: </span>
@@ -151,6 +173,7 @@
                     <div class="row">
                         <div class="col-md-4 col-lg-3">
                             <giftcardredemption ng-if="user.Permissions.contains('ViewPromotions')" />
+                            <span class="printOrder" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}" ></i></span></span>
                         </div>
                         <div class="col-md-3 col-md-offset-5 col-lg-4 text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
                             <h4 class="text-primary">
@@ -203,24 +226,18 @@
                         </li>
                     </ul>
                 </div>
-
-                <ul>
-                    <li>
-                        <button type="button" class="btn btn-danger cancelColor" ng-click="currentOrder.Status == 'AwaitingApproval' ? cancelEdit() : cancelOrder()">
-                            <small ng-if="currentOrder.Status != 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Order' | r) | xlat}}</small>
-                            <small ng-if="currentOrder.Status == 'AwaitingApproval'">{{('Cancel' | r) + ' ' + ('Edit' | r) | xlat}}</small>
-                        </button>
-                    </li>
+<!--here here here-->
+                <ul class="pull-right col-lg-8">
                     <li>
                         <button type="submit" class="btn btn-primary saveColor" ng-click="saveChanges()">
                             <loadingindicator  ng-show="displayLoadingIndicator" />
-                            <small>{{('Save' | r) + ' ' + ('Order' | r) | xlat}}</small>
+                            <span class="continueShoppingButton">{{('Continue' | r) + ' ' + ('Shopping' | r) | xlat}}<span>
                         </button>
-                    </li>
+                    </li> 
                     <li>
                         <button class="btn submitColor" ng-class="{'btn-warning': cart.$invalid, 'btn-success': !cart.$invalid }" ng-click="submitPunchoutOrder()" ng-disabled="cart.$invalid">
                             <i ng-show="cart.$invalid" class="fa fa-warning"></i>
-                            <span>{{'Submit' | r | xlat}} {{window.outerWidth}}</span>
+                            <span>{{'Submit Order' | r | xlat}} {{window.outerWidth}}</span>
                         </button>
                     </li>
                 </ul>
@@ -235,7 +252,5 @@
 	</form>
     <cartprint class="visible-print" />
 </section>
-
-
 <!--updated for custom.css - bb -->
 
