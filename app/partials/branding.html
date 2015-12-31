@@ -1,0 +1,11 @@
+<section class="jumbotron" ng-class="{'active': isActive('catalog')}" ng-show="user.Company.LogoUrl">
+    <div class="container">
+        <h2 class="thumbnail companyImageBackground" ng-show="Four51User.isAuthenticated()">
+            <a ng-click="refreshUser()" href="catalog">
+                <img ng-src="{{user.Company.LogoUrl}}" />
+            </a>
+         
+            <homemessage />
+        </h2>
+    </div>
+</section>

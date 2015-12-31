@@ -1,0 +1,254 @@
+    /* --------------Main Site Colors-------------- */
+
+
+    /* it is recommended to use either background with a URL
+       or to use background color exclusively of one another.
+       You can comment out everything from background: url to
+       background-size: cover; and then remove the comments 
+       surrounding color and background-color below those lines */
+       
+	body {
+		background: url('http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/backgroundImage/background-color-mezzoPix-grayscale.jpg') no-repeat center center fixed;
+	    -webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		/*
+		color: #bbb;
+        background-color: white !important; */
+    }
+    
+    .companyImageBackground {
+        background-color: white !important;
+    }
+    
+    .container-view {
+        background-color: rgba(255, 255, 255, 1);
+        
+    }
+    
+    /* --------------Category Icon Colors-------------- */
+    
+    /* this controls the backgrounds of the category icon container */
+    
+    .panel-default {
+        background-color: white !important;
+    }
+    
+    .panel-category-list {
+        background-color: white !important;
+    }
+    
+    /*to hide category Names, display: none; */
+    
+    .panel-category-list ul li .well h5 {
+        /* display: none !important; */
+    }
+    
+    /* This controls the category and product names */
+    
+    .navColors {
+        color: black !important;
+        
+    }
+    
+    /* --------------navbar Colors-------------- */
+    
+    /* Main Navbar Background - the right side - 
+       you can add this class to the PDT to match 
+       the right side of the navbar
+       --This also controls the background-color 
+       of the headers on !2.0_BaseTheme2and3_MainTemplate1*/
+    
+    .navColorControl {
+        background-color: black !important;
+        color: white !important;
+    }
+    
+    /* Links on left side */
+    .colorControl {
+        color: white !important;
+        background-color: black !important;
+    }
+    
+    .colorControl:hover {
+        color: white !important;
+        background-color: grey !important;
+    }
+    
+    /* Category Dropdown Menu */
+    
+    /* The dropdown menu background color should match
+       the color of the left side links background color
+       when it is not in a hover state */
+       
+    .dropdown-menu {
+        color: white !important;
+        background-color: grey !important;
+    }
+    
+    .dropdownColor a {
+        color: white !important;
+        background-color: grey !important;
+    }
+    
+    .dropdownColor a:hover {
+        color: white !important;
+        background-color: grey !important;
+        font-size: 105% !important;
+        text-decoration: none !important;
+    }
+    
+    /* backArrow on Left -- this appears after "page 1" */
+    
+    .backArrow {
+        color: white !important;
+    }
+    
+    .backArrow:hover {
+        color: darkgrey !important;
+    }
+    
+    /* Shopping Cart Badges on Right */
+    
+    /* more than likely, there is not a need to adjust these buttons,
+       but this also can adjust the size of each */
+    
+    .cartPulledRightBackground {
+        background-color: black !important;
+    }
+    
+    .cartCountControl{
+        background-color: grey !important;
+        color: white !important;
+    }
+    
+    .cartCountControl:hover {
+        background-color: darkgrey !important;
+        color: white !important;
+    }
+    
+    .shoppingCartBadge {
+        background-color: grey !important;
+        border: none !important;
+    }
+    
+    .shoppingCartBadge:hover {
+        background-color: darkgrey !important;
+        color: white !important;
+    }
+    
+    /* --------------Checkout Colors-------------- */
+    
+    /* ----buttons---- */
+    
+    /* this controls the cart button colors and their hover states */
+    
+    .cancelColor {
+        background-color: grey !important;
+    }
+    
+    .cancelColor:hover {
+        background-color: #505050 !important;
+    }
+    
+    .saveColor {
+        background-color: grey !important;   
+    }
+    
+    .saveColor:hover { 
+        background-color: #505050 !important;
+    }
+    
+    .submitColor {
+        background-color: #505050 !important;
+    }
+    
+    .submitColor:hover {
+        background-color: #222 !important;
+    }
+    
+    /* right side of line item */
+    
+    .deleteItem {
+        background-color: red !important;
+        border: none !important;
+    }
+    
+    .deleteItem:hover {
+        background-color: darkred !important;
+        border: none !important;
+    }
+    
+    
+    /* --------------Quick Edits-------------- */
+    
+    /* this is intended to be a place for quick edits any updates with animate.css
+       or any site specific updates that need to be made, can occur here.
+       However, it was designed for more involved updates to occur on the theme.
+       Theme updates should signify a custom site */
+    
+    /* Dropdown Width - if there is a long category name
+       you will need to make this width larger*/
+    
+    .navbar .container .navbar-nav.pull-left li ul li,
+    .navbar .container-view .navbar-nav.pull-left li ul li {
+        width: 200px;
+    }
+    
+    /* Company Image */
+    
+    .jumbotron h2 img {
+	    max-height: 100%;
+    	background-color: white;
+    }
+    
+    .h3Target h3 {
+        font-size: 19px;
+    } 
+    
+    .empty {
+        padding: 10.5px;
+    }
+    
+    /* This controls the height of the logo container. Adjust this, to adjust the height
+       of the space surrounding the main logo. */
+	
+	.jumbotron .container {
+		height: 300px;  /* custom message no */
+		/* height: 360px;  custom message yes | ensure height matches margin-top on .navbar-fixed-top above */
+		padding: 0 0px;
+		overflow: hidden;
+	}
+	
+	/* This controls the height of the margin above the navbar. */
+
+    	.navbar-fixed-top {
+		position: static;
+		margin-top: 300px /*  custom message no */
+		/* margin-top: 345px;  custom message yes | ensure margin matches height on .jumbotron .container below */
+	}
+
+    
+    /* pageLoadControl is used to delay the load of the page 
+       in order to mask the page flicker caused by the base app */
+       
+    /* To adjust the amount of load time, change animation-delay
+       The animation-duration controls the lenght of time it takes 
+       once the animation begins */
+    
+    .pageLoadControl {
+        -webkit-animation-duration: 0s;
+        -webkit-animation-delay: 0s;
+        -ms-animation-duration: 0s;
+        -ms-animation-delay: 0s;
+        -o-animation-duration: 0s;
+        -o-animation-delay: 0s;        
+        -moz-animation-duration: 0s;
+        -moz-animation-delay: 0s;          
+    } 
+    
+    
+    
+    
+    

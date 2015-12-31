@@ -1,0 +1,42 @@
+<header class="header navbar navbar-inner">
+    <nav tolerance='20' offset='200' class="navbar navbar-default navbar-fixed-top" role="navigation" headroom>
+        <section>
+            <div class="container navColorControl">
+                <ul class="nav navbar-nav pull-left colorControl">
+                    <li class="back animated fadeInLeft colorControl" ng-class="{'ng-hide': isActive('catalog')}">
+                        <a href back-step class="back colorControl">
+                            <i class="fa fa-arrow-left backArrow"></i>
+                        </a>
+                    </li>
+                    <li class="products colorControl" ng-class="{'active': isInPath('catalog') || isInPath('product') || isInPath('cart/default') || isInPath('search')}">
+                        <a id="451qa_home_link" class="colorControl" ng-show="Four51User.isAuthenticated()" href="catalog">
+                            <i class="fa fa-home"></i>
+                            <span class="hidden-xs">{{'Products' | rc | xlat}}</span>
+                        </a>
+                    </li>
+                    <li class="dropdown admin-user visible-xs visible-sm visible-md visible-lg colorControl">
+                        <a id="451qa_acct_link2" class="dropdown-toggle colorControl" data-toggle="dropdown">
+                            <b class="caret"></b>
+                            <span>{{'Categories' | r | xlat}}</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                                <categorytree tree='tree' current='currentCategory' />
+                        </ul>
+                    </li>
+                    <li class="colorControl">
+                        <a class="colorControl" href="https://vibenet.thalerus.com/Regency">Office Supplies</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li class="cart" ng-class="{'active': isActive(['cart', 'checkout'])}">
+                        <a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart cartPulledRightBackground" href="cart">
+                            <span ng-bind="cartCount" class="badge cartCountControl"></span>
+                            <i class="fa fa-shopping-cart shoppingCartBadge"></i>
+                            <!--<i class="fa fa-caret-down"></i>-->
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </nav>
+</header>

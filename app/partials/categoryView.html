@@ -1,0 +1,39 @@
+<section class="animated fadeIn pageLoadControl">
+    <nav id="451qa_nav_hdr" class="nav">
+        <ul id="categoryTitleContainer">
+            <li class="hidden-sm hidden-xs">
+                <span ng-click="toggleNav()"><i class="fa fa-bars" ng-class="{ 'text-info': navStatus.visible }"></i></span>
+            </li>
+            <li>
+                <span id="451_lbl_curcat" class="text-primary navColors" ng-bind-html="currentCategory.Name || '  {{'Categories' | r | xlat}}'"></span>
+            </li>
+            <li class="pull-right">
+                <a href="search">
+                    <span><i class="fa fa-search text-primary navColors"></i></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <aside class="col-lg-0 col-md-0 col-sm-0 col-collapse visible-md visible-lg" ng-if="navStatus.invisible">
+        <div class="panel panel-default panel-nav">
+            <div class="panel-heading">
+                    {{'Category List' | r | xlat}}
+                </h3>
+            </div>
+            <nav class="nav 451qa_sidenav panel-body">
+                <ul>
+                    <categorytree tree='tree' current='currentCategory' />
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="col-collapse" ng-class="{ 'col-lg-12 col-md-12 col-md-offset-0': navStatus.visible }" >
+
+        <categorylistview></categorylistview>
+
+		<loadingindicator ng-show="productLoadingIndicator" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
+
+        <productlistview></productlistview>
+
+    </div>
+</section>

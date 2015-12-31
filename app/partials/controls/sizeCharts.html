@@ -1,0 +1,5 @@
+<div ng-repeat="sg in specgroups">
+    <div ng-show="s.VisibleToCustomer" ng-repeat="s in sg.Specs">
+        <img ng-if="!s.FileURL" ng-src="http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/sizeCharts/automated/{{s.Value | xlat}}.jpg"></img>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+<div ng-repeat="sg in specgroups">
+    <div ng-show="s.VisibleToCustomer" ng-repeat="s in sg.Specs">
+        <img ng-if="s.FileURL" src={{s.FileURL}}></img>
+    </div>
+</div>
