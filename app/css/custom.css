@@ -8,23 +8,27 @@
        surrounding color and background-color below those lines */
        
 	body {
-		background: url('http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/backgroundImage/background-color-mezzoPix-grayscale.jpg') no-repeat center center fixed;
+		/*background: url('http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/backgroundImage/background-color-mezzoPix-grayscale.jpg') no-repeat center center fixed;
 	    -webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
-		/*
-		color: #bbb;
-        background-color: white !important; */
+		*/
+		color: #222;
+		background: rgba(245,245,245,1); 
     }
     
     .companyImageBackground {
         background-color: white !important;
+        margin: 0 auto;
     }
     
     .container-view {
         background-color: rgba(255, 255, 255, 1);
-        
+    }
+    
+    #content {
+        box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.8);
     }
     
     /* --------------Category Icon Colors-------------- */
@@ -48,7 +52,7 @@
     /* This controls the category and product names */
     
     .navColors {
-        color: black !important;
+        color: #222 !important;
         
     }
     
@@ -61,19 +65,24 @@
        of the headers on !2.0_BaseTheme2and3_MainTemplate1*/
     
     .navColorControl {
-        background-color: black !important;
+        background: #444; /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(#222, #444, #222) !important; /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(#222, #444, #222) !important; /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(#222, #444, #222) !important; /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#222, #444, #222) !important; /* Standard syntax */
         color: white !important;
+        height: 40px;
     }
     
     /* Links on left side */
     .colorControl {
         color: white !important;
-        background-color: black !important;
+        background-color: transparent !important;
     }
     
     .colorControl:hover {
         color: white !important;
-        background-color: grey !important;
+        background-color: #222 !important;
     }
     
     /* Category Dropdown Menu */
@@ -84,17 +93,17 @@
        
     .dropdown-menu {
         color: white !important;
-        background-color: grey !important;
+        background-color: #222 !important;
     }
     
     .dropdownColor a {
         color: white !important;
-        background-color: grey !important;
+        background-color: #222 !important;
     }
     
     .dropdownColor a:hover {
         color: white !important;
-        background-color: grey !important;
+        background-color: #222 !important;
         font-size: 105% !important;
         text-decoration: none !important;
     }
@@ -106,7 +115,7 @@
     }
     
     .backArrow:hover {
-        color: darkgrey !important;
+        color: #0a0b35 !important;
     }
     
     /* Shopping Cart Badges on Right */
@@ -115,27 +124,29 @@
        but this also can adjust the size of each */
     
     .cartPulledRightBackground {
-        background-color: black !important;
+        background-color: none !important;
     }
     
     .cartCountControl{
-        background-color: grey !important;
+        background-color: #222 !important;
         color: white !important;
     }
     
     .cartCountControl:hover {
-        background-color: darkgrey !important;
+        background-color: #0a0b35 !important;
         color: white !important;
     }
     
     .shoppingCartBadge {
-        background-color: grey !important;
+        background-color: none !important;
         border: none !important;
+        color: #222 !important;
+        padding: 5px;
     }
     
     .shoppingCartBadge:hover {
-        background-color: darkgrey !important;
-        color: white !important;
+        background-color: none !important;
+        color: black !important;
     }
     
     /* --------------Checkout Colors-------------- */
@@ -145,7 +156,7 @@
     /* this controls the cart button colors and their hover states */
     
     .cancelColor {
-        background-color: grey !important;
+        background-color: #222 !important;
     }
     
     .cancelColor:hover {
@@ -153,7 +164,7 @@
     }
     
     .saveColor {
-        background-color: grey !important;   
+        background-color: #222 !important;   
     }
     
     .saveColor:hover { 
@@ -199,8 +210,9 @@
     /* Company Image */
     
     .jumbotron h2 img {
-	    max-height: 100%;
+	    max-height: 149px;
     	background-color: white;
+    	margin: 0px 0 0 15px;
     }
     
     .h3Target h3 {
@@ -215,7 +227,7 @@
        of the space surrounding the main logo. */
 	
 	.jumbotron .container {
-		height: 300px;  /* custom message no */
+		height: 150px;  /* custom message no */
 		/* height: 360px;  custom message yes | ensure height matches margin-top on .navbar-fixed-top above */
 		padding: 0 0px;
 		overflow: hidden;
@@ -223,9 +235,9 @@
 	
 	/* This controls the height of the margin above the navbar. */
 
-    	.navbar-fixed-top {
+    .navbar-fixed-top {
 		position: static;
-		margin-top: 300px /*  custom message no */
+		margin-top: 150px /*  custom message no */
 		/* margin-top: 345px;  custom message yes | ensure margin matches height on .jumbotron .container below */
 	}
 
@@ -248,7 +260,128 @@
         -moz-animation-delay: 0s;          
     } 
     
+    .colorHighlight {
+        padding: 25px 0 0 0;
+        color: #9b080e;
+    } 
     
+    .footerContainer .colorHighlight {
+        color: #009CDB;
+    } 
     
+    .navAndBrandingContainer {
+        width: 100%;
+        background-color:red;
+    }
     
+    #content {
+        max-width: 85%;
+        margin: 0px auto 0px;
+    }
     
+    .footerContainer {
+        width: 100%;
+        z-index: -1;
+        background-color: #222;
+        color: #fff;
+        font-size: 1.5em;
+        line-height: 1.75em;
+        text-align: center;
+        padding: 30px 30px 100px 30px;
+    }
+    
+    .officeSuppliesContainer {
+        width: 100%;
+        text-align: center;
+        height: 0px;
+    }
+    
+    a.officeSupplies {
+        position: relative;
+        font-size: 1.15em;
+        text-decoration: none;
+        bottom: 85px;
+        padding: 7px 75px;
+        background-color: rgba(235,235,235,0.0);
+        color: rgba(255,255,255,1.0);
+        border-radius: 5px;
+        border: 3px solid rgba(255,255,255,0.35);
+
+    }
+    
+    a.officeSupplies:hover {
+        position: relative;
+        font-size: 1.15em;
+        background-color: rgba(235,235,235,0.3);
+        color: rgba(41,66,99,1.0);
+        border-radius: 5px;
+        border: 3px solid rgba(255,255,255,0.45);
+    }
+    
+    .specform-default .imagePreviewTwoColumn {
+        margin: 0 auto;
+        max-width: 100%;
+        margin-top: 19px;
+        border-right: 1px solid #bbb;
+    }
+    .specform-default .imagePreviewTwoColumn img {
+        max-width: 100%;
+    }
+    
+    .specform-default .specformRight {
+        padding-left: 33px;
+        padding-bottom: 30px;
+    }
+    
+    .partialsNavControl .cart a {
+    	position: relative;
+    	float: right;
+    	margin: -215px 15px 0 0;
+    	font-size: 1.25em;
+    	z-index: 999999999;
+    }
+    
+    .cartHeading {
+        font-size: 2em;
+        text-align: center;
+        margin: 5px;
+        padding:20px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font-family: 'Lato', sans-serif;
+        background: rgba(113,113,121,1); /* For browsers that do not support gradients */
+        background: -webkit-linear-gradient(rgba(113,113,121,1), rgba(175,175,180,1), rgba(113,113,121,1)) !important; /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(rgba(113,113,121,1), rgba(175,175,180,1), rgba(113,113,121,1)) !important; /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(rgba(113,113,121,1), rgba(175,175,180,1), rgba(113,113,121,1)) !important; /* For Firefox 3.6 to 15 */
+        background: linear-gradient(rgba(113,113,121,1), rgba(175,175,180,1), rgba(113,113,121,1)) !important; /* Standard syntax */
+        color: #fff;
+    }
+    
+    .form-group .view-form-icon .quantity div select {
+        width: 35%;
+    }
+    
+    .highlight {
+        clear: both;
+    }
+    
+    .fa-edit {
+        display: none;
+    }
+
+/*	.container, .container-view, .jumbotron .container, .jumbotron .container-view, .navbar-fixed-bottom, .navbar-fixed-top {
+		max-width: 1210px; 
+		margin: 0 auto;
+	}
+	.header {
+		max-width: 1210px;
+		margin: 0px auto 0;
+		padding: 25px 0px 0;
+		background-color: rgba(255, 255, 255, 1);
+	} */
+	
+	
+	
+	
+	
+	
