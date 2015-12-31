@@ -6209,7 +6209,7 @@ button::-moz-focus-inner {
 .view-form-icon select,
 .view-form-icon text,
 .view-form-icon textarea {
-  padding-left: 30px;
+  padding-left: 15px;
 }
 .view-form-icon i {
   color: #cccccc;
@@ -6430,19 +6430,21 @@ button::-moz-focus-inner {
   display: inline-block;
   float: left;
 }
+/*
 .navbar-fixed-bottom ul li:nth-of-type(1) {
   width: 25%;
 }
+
 .navbar-fixed-bottom ul li:nth-of-type(1) .btn {
   font-size: 11px;
 }
 .navbar-fixed-bottom ul li:nth-of-type(2) {
   width: 25%;
-}
+} 
 .navbar-fixed-bottom ul li:nth-of-type(2) .btn {
   font-size: 11px;
-}
-.navbar-fixed-bottom ul li:last-child {
+} */
+/*.navbar-fixed-bottom ul li:last-child {
   width: 50%;
 }
 .navbar-fixed-bottom ul li:last-child .btn {
@@ -6455,7 +6457,7 @@ button::-moz-focus-inner {
   border-radius: 0;
   padding: 20px 0;
   text-transform: lowercase;
-}
+}*/
 .navbar-fixed-bottom ul li .btn-warning[disabled] {
   opacity: 1;
 }
@@ -8013,8 +8015,10 @@ select.ng-invalid:invalid:invalid:focus {
     width: 25%;
   }
 }
+
+/*height below image*/
 .panel-product-list ul li.inline h3 {
-  margin: 0 0 7px;
+  margin: 25px 0 7px;
   min-height: 60px;
 }
 .panel-product-list ul li.inline .panel-footer {
@@ -8047,12 +8051,11 @@ select.ng-invalid:invalid:invalid:focus {
   display: none;
 }
 .panel-product-list ul li a {
-  padding: .75em;
   display: block;
   text-decoration: none;
 }
 .panel-product-list ul li a img {
-  margin: 0 auto 15px;
+  margin: 0 auto -15px;
 }
 .panel-product-list ul li .shortproduct-info {
   background-color: rgba(0, 0, 0, 0.85);
@@ -8273,6 +8276,11 @@ select.ng-invalid:invalid:invalid:focus {
 .panel-lineitem .row h3 {
   margin: 0;
 }
+
+.panel-lineitem .row .text-success {
+  font-size: 2em;
+}
+
 .panel-order {
   margin-bottom: 5px;
 }
