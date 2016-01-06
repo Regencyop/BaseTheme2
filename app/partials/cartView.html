@@ -171,11 +171,7 @@
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col-md-4 col-lg-3">
-                            <giftcardredemption ng-if="user.Permissions.contains('ViewPromotions')" />
-                            <span class="printOrder" ng-click="onPrint()"><span><i class="fa fa-print text-primary" rel="tooltip" title="{{'Print' | r | xlat}}" ></i></span></span>
-                        </div>
-                        <div class="col-md-3 col-md-offset-5 col-lg-4 text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
+                        <div class="col-md-3 col-md-offset-8 col-lg-4 text-right" ng-if="!(user.Permissions.contains('HidePricing'))">
                             <h4 class="text-primary">
                                 <strong>{{'Subtotal' | r | xlat}} <span class="text-success">{{currentOrder.Subtotal | culturecurrency}}</span></strong>
                             </h4>
