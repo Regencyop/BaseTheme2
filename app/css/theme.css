@@ -2500,9 +2500,6 @@ fieldset[disabled] .btn-link:focus {
 
 /* Custom CSS */
 
-
-@media (min-width: 990px){
-    
 	.container-view {
 		padding: 0px 0px 0;
 	}
