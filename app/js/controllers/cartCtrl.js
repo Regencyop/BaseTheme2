@@ -81,7 +81,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 					if (callback) callback();
 					if(disableComplete) return;
 					$scope.displayLoadingIndicator = false;
-					$scope.actionMessage = 'Your Changes Have Been Saved!';
+					$location.path('catalog');
 				},
 				function(ex) {
 					$scope.errorMessage = ex.Message;
