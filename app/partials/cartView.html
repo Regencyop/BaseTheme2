@@ -47,7 +47,12 @@
                     </div>
                 -->
                 <div class="panel-lineitem" ng-repeat="item in currentOrder.LineItems">
-                    <button type="button" title="Remove Item" class="btn btn-danger deleteItem" ng-click="removeItem(item)">
+                     <!--
+                    For 'kit' implementation update 'prodId1' and/or 'someOtherProdId' with any of the items on the site that
+                    need to be set up as a kit. Separate every item with double pipes and surround with single quotation marks 
+                    and not double.
+                    -->
+                    <button  type="button"  title="Remove  Item"  class="btn  btn-danger  deleteItem" ng-hide="item.Product.InteropID == 'prodId1' || 'someOtherProdId'" ng-click="removeItem(item)">
                         <span class="fa fa-minus-circle fa-inverse"></span>
                     </button>
                     <div class="col-sm-3">
