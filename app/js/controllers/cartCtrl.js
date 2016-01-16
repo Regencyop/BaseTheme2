@@ -81,11 +81,37 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 					if (callback) callback();
 					if(disableComplete) return;
 					$scope.displayLoadingIndicator = false;
+					$scope.actionMessage = 'Your Changes Have Been Saved!';
+				},
+				function(ex) {
+					$scope.errorMessage = ex.Message;
+					$scope.displayLoadingIndicator = false;
+				}
+			);
+		}
+	};
+
+	//ContinueShopping
+
+	$scope.saveAndContinueShopping = function(callback, disableComplete) {
+		$scope.actionMessage = null;
+		$scope.errorMessage = null;
+		if($scope.displayLoadingIndicator.length != $451.filter($scope.currentOrder.LineItems, {Property:'Selected', Value: true}).length) {
+			$scope.displayLoadingIndicator = true;
+			OrderConfig.address($scope.currentOrder, $scope.user);
+			Order.save($scope.currentOrder,
+				function(data) {
+					$scope.currentOrder = data;
+					if (callback) callback();
+					if(disableComplete) return;
+					$scope.displayLoadingIndicator = false;
 					$location.path('catalog');
 				},
 				function(ex) {
 					$scope.errorMessage = ex.Message;
 					$scope.displayLoadingIndicator = false;
+					//Save cart and continue to catalog
+					$location.path('catalog');
 				}
 			);
 		}
