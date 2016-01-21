@@ -3037,7 +3037,13 @@ font-weight: bold;
     
 }
 
-
+    .printOrder {
+        float: left;
+        position: relative;
+        top: 5px;
+        font-size: 2em;
+    }
+    
 
 
 
