@@ -2,6 +2,11 @@ four51.app.controller('CartViewCtrl', ['$scope', '$routeParams', '$location', '$
 function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punchout, $sce, $timeout, $window) {
 
 	if($scope.PunchoutSession.PunchoutOperation != "Inspect")
+
+//  **** Do not adjust the line below unless it is already a LIVE PUNCHOUT site, there is no other need to adjust it
+//  This must absolutely be set to $scope.PunchoutSession = Punchout.punchoutSession; 
+//  in order for the site to function correctly when live ****
+//  If it is a 1.0 or new site, you can test the 2.0 site via the user/vibenet login without these overrides
 		$scope.punchouturl = $sce.trustAsResourceUrl(Punchout.punchoutSession.PunchOutPostURL);
 	$scope.submitPunchoutOrder = function(){
 		$scope.saveChanges(function(data){
@@ -56,7 +61,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 						$location.path('catalog');
 					});
 					$scope.displayLoadingIndicator = false;
-					$scope.actionMessage = 'Your Changes Have Been Saved';
+					$scope.actionMessage = 'Your order has been canceled';
 				},
 				function(ex) {
 					$scope.actionMessage = 'An error occurred: ' + ex.Message;
@@ -81,7 +86,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 					if (callback) callback();
 					if(disableComplete) return;
 					$scope.displayLoadingIndicator = false;
-					$scope.actionMessage = 'Your Changes Have Been Saved!';
+					$scope.actionMessage = 'Your order is being submitted!';
 				},
 				function(ex) {
 					$scope.errorMessage = ex.Message;
@@ -90,31 +95,18 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 			);
 		}
 	};
-
-	//ContinueShopping
-
+	
+	//Save Shopping and continue
 	$scope.saveAndContinueShopping = function(callback, disableComplete) {
 		$scope.actionMessage = null;
 		$scope.errorMessage = null;
-		if($scope.displayLoadingIndicator.length != $451.filter($scope.currentOrder.LineItems, {Property:'Selected', Value: true}).length) {
-			$scope.displayLoadingIndicator = true;
-			OrderConfig.address($scope.currentOrder, $scope.user);
-			Order.save($scope.currentOrder,
-				function(data) {
-					$scope.currentOrder = data;
-					if (callback) callback();
-					if(disableComplete) return;
-					$scope.displayLoadingIndicator = false;
-					$location.path('catalog');
-				},
-				function(ex) {
-					$scope.errorMessage = ex.Message;
-					$scope.displayLoadingIndicator = false;
-					//Save cart and continue to catalog
-					$location.path('catalog');
-				}
-			);
-		}
+		Order.save($scope.currentOrder,
+			function(ex) {
+				$scope.displayLoadingIndicator = false;
+				//Save cart and continue to catalog
+				$location.path('catalog');
+			}
+		);
 	};
 
 	$scope.removeItem = function(item) {
