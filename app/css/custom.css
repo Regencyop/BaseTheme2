@@ -363,6 +363,15 @@
         width: 35%;
     }
     
+    .printOrder {
+    	color: #bbb !important;
+    }
+    
+    .printOrder:hover {
+        color: #777 !important;
+    }
+
+    
     .highlight {
         clear: both;
     }
