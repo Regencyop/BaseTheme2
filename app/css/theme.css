@@ -2966,7 +2966,76 @@ font-weight: bold;
     }
 
 
+/* Cart Buttons */
 
+    .checkoutButtonContainer {
+        position: relative;
+        left: 20px;
+        margin-bottom: 15px;
+    }
+
+    .checkoutBtn {
+        display: inline-block;
+        margin: 0 0 0 1%;
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 15px 20px;
+        font-size: 1em;
+        line-height: 1.42857143;
+        border-radius: 4px;
+    }
+
+    .smallCheckoutButton {
+        width: 23%;
+    }
+    
+    
+    .largeCheckoutButton {
+        width: 48%;
+    }
+    
+    
+@media (max-width: 767px) {
+    
+    .checkoutButtonContainer {
+        position: relative;
+        left: 0px;
+    }
+
+    .checkoutBtn {
+        display: inline-block;
+        margin: 0 0 0 0%;
+        font-weight: normal;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        white-space: nowrap;
+        padding: 15px 20px;
+        font-size: 1em;
+        line-height: 1.42857143;
+        border-radius: 4px;
+        border: 2px solid #bbb;
+    }
+
+    .smallCheckoutButton {
+        width: 100%;
+        margin-bottom: 0.5em;
+    }
+    
+    
+    .largeCheckoutButton {
+        width: 100%;
+        margin-bottom: 0.25em;
+    }
+    
+}
 
 
 
