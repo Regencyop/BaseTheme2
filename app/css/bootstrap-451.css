@@ -10192,7 +10192,13 @@ table[datepicker] {
   content: "\f1e2";
 }
 
+customtextfield[customfield="Variant.Specs.ProductImage"] {
+    display:none;
+}
 
+customtextfield[customfield="Variant.Specs.Weight"] {
+    display:none;
+}
 
 
 
