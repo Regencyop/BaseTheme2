@@ -1,4 +1,3 @@
-
 four51.app.controller('ProductCtrl', ['$scope', '$routeParams', '$route', '$location', '$451', 'Product', 'ProductDisplayService', 'Order', 'Variant', 'User',
 function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplayService, Order, Variant, User) {
     $scope.selected = 1;
@@ -11,7 +10,6 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 		currentPage: 1,
 		pageSize: 10
 	};
-    var sampleKitIndex = ['fictitiousKit1'];
 
 	$scope.calcVariantLineItems = function(i){
 		$scope.variantLineItemsOrderTotal = 0;
@@ -33,28 +31,6 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 			$scope.$broadcast('ProductGetComplete');
 			$scope.loadingIndicator = false;
 			$scope.setAddToOrderErrors();
-			data.product.Specs.ProductImage.DefaultValue = data.product.SmallImageUrl;
-			data.product.Specs.Weight.DefaultValue = data.product.ShipWeight;
-			var checkForThis = $scope.LineItem.Specs.ProductImage;		
-		//if spec does not exist spec.name = 'ProductImage'	
-			
-		
-    	$scope.$watch('LineItem.Specs', function (spec) {
-    		if (spec && (spec.Name  = 'ProductImage') && ($scope.LineItem.Product.Type != 'VariableText')) {
-    			if (!$scope.LineItem.Product.IsVBOSS) {	 
-    				if ($scope.LineItem.Specs && $scope.LineItem.Specs.ProductImage) {
-    					$scope.LineItem.Specs.ProductImage.Value = data.product.SmallImageUrl;
-    				}
-    			}
-    		}
-    		if (spec && (spec.Name  = 'Weight') && ($scope.LineItem.Product.Type != 'VariableText')) {
-    			if (!$scope.LineItem.Product.IsVBOSS) {     
-    				if ($scope.LineItem.Specs && $scope.LineItem.Specs.Weight) {
-    					$scope.LineItem.Specs.Weight.Value = data.product.ShipWeight;
-    				}
-    			}
-    		}
-    	});
 			if (angular.isFunction(callback))
 				callback();
 		}, $scope.settings.currentPage, $scope.settings.pageSize, searchTerm);
@@ -88,7 +64,7 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 			}
 		);
 	}
-    
+
 	$scope.addToOrder = function(){
 		if($scope.lineItemErrors && $scope.lineItemErrors.length){
 			$scope.showAddToCartErrors = true;
@@ -100,7 +76,14 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 		}
 		if (!$scope.currentOrder.LineItems)
 			$scope.currentOrder.LineItems = [];
-else{
+		if($scope.allowAddFromVariantList){
+			angular.forEach($scope.variantLineItems, function(item){
+				if(item.Quantity > 0){
+					$scope.currentOrder.LineItems.push(item);
+					$scope.currentOrder.Type = item.PriceSchedule.OrderType;
+				}
+			});
+		}else{
 			$scope.currentOrder.LineItems.push($scope.LineItem);
 			$scope.currentOrder.Type = $scope.LineItem.PriceSchedule.OrderType;
 		}
@@ -113,26 +96,7 @@ else{
 					$scope.user.CurrentOrderID = o.ID;
 					User.save($scope.user, function(){
 						$scope.addToOrderIndicator = true;
-						var pathname = window.location.pathname;
-						 
-
-						    if (sampleKitIndex.indexOf(pathname) != -1) {
-						    	var kitItemIndex = sampleKitIndex.indexOf(pathname);
-						    	if (kitItemIndex < sampleKitIndex.length-1) {
-                                    kitItemIndex ++;
-                                    var newPath = sampleKitIndex[kitItemIndex];
-                                    var newPath = newPath.replace('/40713/', '');
-                                    $scope.nextItem = newPath;
-                                    $location.path(newPath);
-						    	}
-						    	else {
-						    	    $location.path('/cart');
-						    	}
-						    }
-                            else {
-                                $location.path('/cart');   
-                            }
-							
+						$location.path('/cart');
 					});
 				},
 				function(ex) {
