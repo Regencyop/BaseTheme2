@@ -6,17 +6,20 @@
        You can comment out everything from background: url to
        background-size: cover; and then remove the comments 
        surrounding color and background-color below those lines */
-       
-	body {
-		/*background: url('http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/backgroundImage/background-color-mezzoPix-grayscale.jpg') no-repeat center center fixed;
-	    -webkit-background-size: cover;
+    
+    .background {
+        background: none !important;
+    }
+
+    
+    body{
+        background: url('http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/backgroundImage/medixBackground.jpg') no-repeat center center fixed;
+        -webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
-		*/
-		color: #222;
-		background: rgba(245,245,245,1); 
     }
+    
     
     .companyImageBackground {
         background-color: white !important;
@@ -52,7 +55,7 @@
     /* This controls the category and product names */
     
     .navColors {
-        color: #222 !important;
+        color: #00315a !important;
         
     }
     
@@ -65,13 +68,10 @@
        of the headers on !2.0_BaseTheme2and3_MainTemplate1*/
     
     .navColorControl {
-        background: #444; /* For browsers that do not support gradients */
-        background: -webkit-linear-gradient(#222, #444, #222) !important; /* For Safari 5.1 to 6.0 */
-        background: -o-linear-gradient(#222, #444, #222) !important; /* For Opera 11.1 to 12.0 */
-        background: -moz-linear-gradient(#222, #444, #222) !important; /* For Firefox 3.6 to 15 */
-        background: linear-gradient(#222, #444, #222) !important; /* Standard syntax */
-        color: white !important;
-        height: 40px;
+        background: #0074c8; /* For browsers that do not support gradients */
+        height: 50px;
+        color: #fff;
+        font-size: 1.25em;
     }
     
     /* Links on left side */
@@ -82,7 +82,7 @@
     
     .colorControl:hover {
         color: white !important;
-        background-color: #222 !important;
+        background-color: #00315a !important;
     }
     
     /* Category Dropdown Menu */
@@ -93,17 +93,17 @@
        
     .dropdown-menu {
         color: white !important;
-        background-color: #222 !important;
+        background-color: #00315a !important;
     }
     
     .dropdownColor a {
         color: white !important;
-        background-color: #222 !important;
+        background-color: #00315a !important;
     }
     
     .dropdownColor a:hover {
         color: white !important;
-        background-color: #222 !important;
+        background-color: #00315a !important;
         font-size: 105% !important;
         text-decoration: none !important;
     }
@@ -128,7 +128,7 @@
     }
     
     .cartCountControl{
-        background-color: #222 !important;
+        background-color: #00315a !important;
         color: white !important;
     }
     
@@ -140,7 +140,7 @@
     .shoppingCartBadge {
         background-color: none !important;
         border: none !important;
-        color: #222 !important;
+        color: #00315a !important;
         padding: 5px;
     }
     
@@ -155,9 +155,15 @@
     
     /* this controls the cart button colors and their hover states */
     
+    .checkoutButtonContainer {
+        margin-bottom: 15px !important;
+    }
+    
     .cancelColor {
-        background-color: #222 !important;
+        background-color: #00315a !important;
         color: white !important;
+        padding: 15px 50px;
+        border-radius: 15px;
     }
     
     .cancelColor:hover {
@@ -165,8 +171,10 @@
     }
     
     .saveColor {
-        background-color: #222 !important;  
+        background-color: #00315a !important;  
         color: white !important;
+        padding: 15px 50px;
+        border-radius: 15px;
     }
     
     .saveColor:hover { 
@@ -175,21 +183,23 @@
     
     .submitColor {
         background-color: #505050 !important;
+        padding: 15px 120px;
+        border-radius: 15px;
     }
     
     .submitColor:hover {
-        background-color: #222 !important;
+        background-color: #00315a !important;
     }
     
     /* right side of line item */
     
     .deleteItem {
-        background-color: red !important;
+        background-color: #0074c8 !important;
         border: none !important;
     }
     
     .deleteItem:hover {
-        background-color: darkred !important;
+        background-color: #0e4678 !important;
         border: none !important;
     }
     
@@ -212,9 +222,9 @@
     /* Company Image */
     
     .jumbotron h2 img {
-	    max-height: 149px;
+	    max-height: 100px;
     	background-color: white;
-    	margin: 0px 0 0 15px;
+    	margin: 10px 0 0 25px;
     }
     
     .h3Target h3 {
@@ -229,7 +239,7 @@
        of the space surrounding the main logo. */
 	
 	.jumbotron .container {
-		height: 150px;  /* custom message no */
+		height: 125px;  /* custom message no */
 		/* height: 360px;  custom message yes | ensure height matches margin-top on .navbar-fixed-top above */
 		padding: 0 0px;
 		overflow: hidden;
@@ -239,7 +249,7 @@
 
     .navbar-fixed-top {
 		position: static;
-		margin-top: 150px /*  custom message no */
+		margin-top: 125px /*  custom message no */
 		/* margin-top: 345px;  custom message yes | ensure margin matches height on .jumbotron .container below */
 	}
 
@@ -264,16 +274,16 @@
     
     .colorHighlight {
         padding: 25px 0 0 0;
-        color: #9b080e;
+        color: #b3d4fc;
     } 
     
     .footerContainer .colorHighlight {
-        color: #009CDB;
+        color: #b3d4fc;
     } 
     
     .navAndBrandingContainer {
         width: 100%;
-        background-color:red;
+        background-color:#0074c8;
     }
     
     #content {
@@ -284,7 +294,7 @@
     .footerContainer {
         width: 100%;
         z-index: -1;
-        background-color: #222;
+        background-color: rgba(0,49,91,0.75);
         color: #fff;
         font-size: 1.5em;
         line-height: 1.75em;
@@ -321,7 +331,7 @@
     }
     
     .specform-default .imagePreviewTwoColumn {
-        margin: 0 auto;
+        margin: 0 0 20px 0;
         max-width: 100%;
         margin-top: 19px;
         border-right: 1px solid #bbb;
@@ -391,8 +401,25 @@
 		background-color: rgba(255, 255, 255, 1);
 	} */
 	
+	.backtotop {
+	    color: #999;
+	}
 	
+	.variantList {
+	    margin-bottom: 50px;
+	}
 	
+    .cartHeader .nav ul li .cartTitle {
+        font-size: 2.5em;
+        position: relative;
+        left: 20px;
+        top: 10px;
+    }
+    
+    .cf {
+        clear: both;
+    }
+
 	
 	
 	
