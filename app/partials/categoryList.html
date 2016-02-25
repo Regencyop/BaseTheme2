@@ -6,19 +6,18 @@
         </div>
         <div class="panel-category-list">
             <loadingindicator ng-show="categoryLoadingIndicator" title="{{'Please wait while we fetch all categories' | r | xlat}}" />
-            <img src="http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/longBeverage/long.jpg" style="max-width: 100%;" />
+            <img src="http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/CLEAResult/Energy2.jpg" style="max-width: 100%;" />
             <nav class="nav 451_lbl_subcatlist">
                 <ul>
-                    <li class="col-lg-3 col-md-4 col-sm-6 col-xs-12" ng-repeat="c in currentCategory.SubCategories">
+                    <li class="col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="c in currentCategory.SubCategories">
                         <div class="well">
                             <a ng-href="catalog/{{c.InteropID}}">
                                 <figure ng-show="c.Image.URL">
-                                    <img class="img-responsive" ng-src="{{c.Image.URL}}"/>
+                                    <img class="catImages img-responsive" ng-src="{{c.Image.URL}}"/>
                                 </figure>
                                 <div class="empty" ng-show="!c.Image.URL">
                                     <span class="fa empty"><i class="fa fa-camera"></i></span>
                                 </div>
-                                <h5 class="navColors" ng-bind-html="c.Name" />
                             </a>
                         </div>
                     </li>
