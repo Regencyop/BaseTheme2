@@ -96,9 +96,7 @@ a.text-primary:hover {
 a.text-success:hover {
   color: #333;
 }
-.text-info {
-  color: #666;
-}
+
 a.text-info:hover {
   color: #333;
 }
@@ -2080,12 +2078,11 @@ fieldset[disabled] .btn-link:focus {
     .navbar .container,
     .navbar .container-view {
       padding: 0;
-      border-top: 2px solid #ed1c24;
     }
 
     .horizontalNavLine {
-        height: 2px;
-        background-color: #ed1c24;
+        height: 0px;
+        background-color: none;
     }
 
     .navbar .container .navbar-nav,
@@ -2126,7 +2123,7 @@ fieldset[disabled] .btn-link:focus {
 /*left links padding*/
 .navbar .container .navbar-nav.pull-left li a,
 .navbar .container-view .navbar-nav.pull-left li a {
-  padding: 10px 15px 28px;
+  padding: 16px 15px 34px;
 }
 .navbar .container .navbar-nav.pull-left li a span,
 .navbar .container-view .navbar-nav.pull-left li a span {
@@ -2335,7 +2332,7 @@ fieldset[disabled] .btn-link:focus {
   margin-bottom: 0;
 }
 .thumbnail img {
-  max-height: 275px;
+  max-height: 125px;
   max-width: 100%;
   margin: 0 auto 15px;
 }
@@ -2778,7 +2775,11 @@ fieldset[disabled] .btn-link:focus {
 /*checkout--cart*/
 
 .text-info {
-    color: #222;
+    color: #0d4677;
+}
+
+.text-info:hover {
+    color: #00254b;
 }
 
 .text-success {
