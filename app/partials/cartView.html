@@ -1,5 +1,5 @@
-<section  class="animated  fadeIn  pageLoadControl">
-     <div  ng-show="currentOrder"  class="hidden-print">
+<section  class="animated fadeIn pageLoadControl">
+     <div  ng-show="currentOrder" class="hidden-print cartHeader">
          <nav  class="nav  backgroundControl">
              <ul>
                  <li><span  class="cartTitle  colorControlNoBackground">{{'Cart'  |  r  |  xlat}}</span></li>
@@ -187,7 +187,7 @@
                  </div>
              </div>
              <div  class="col-lg-12">
-                 <div  class="col-lg-offset-4  col-md-offset-2  col-xs-12  col-sm-12  col-md-10  col-lg-8  checkoutButtonContainer">
+                 <div  class="pull-right checkoutButtonContainer">
                      <span>
                          <button  type="button"  class="checkoutBtn  smallCheckoutButton  cancelColor"  ng-click="currentOrder.Status  ==  'AwaitingApproval'  ?  cancelEdit()  :  cancelOrder()">
                              <span  ng-if="currentOrder.Status  !=  'AwaitingApproval'">{{('Cancel'  |  r)  +  '  '  +  ('Order'  |  r)  |  xlat}}</span>
