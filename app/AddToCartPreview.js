@@ -84,6 +84,7 @@ function addtocartpreview() {
             '<h4>{{item.Variant.Description || item.Product.Name}}</h4>',
             '<h6>Item ID: {{item.Variant.ExternalID || item.Product.ExternalID}}</h6>',
             '<h6>Unit Price: {{item.UnitPrice | culturecurrency}}</h6>',
+            '{{showSpecs}}',
             '</div>',
             '</div>',
             '<div class="section-bottom">',
@@ -149,6 +150,7 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
                     $scope.list = list;
                 })
             });
+            console.log('!lineitem.entryError');
         }
     };
 
@@ -158,6 +160,7 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
             AddToCartPreview.adjustForPriceBreaks(list, function (list) {
                 $scope.list = list;
             });
+            console.log('removeItem');
         });
     };
 
@@ -171,11 +174,13 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
             AddToCartPreview.addListToCart(list, $scope.$parent.currentOrder, $scope.user, function () {
                     $scope.addListToCartIndicator = false;
                     $location.path('cart');
+                    console.log('locationCart');
                 },
                 function (ex) {
                     $scope.addListToCartIndicator = false;
                     $scope.$parent.lineItemErrors.push(ex.Detail);
                     $scope.$parent.showAddToCartErrors = true;
+                    console.log('addtocartindicator');
                 });
         }
     };
@@ -190,14 +195,17 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
             AddToCartPreview.adjustForPriceBreaks(list, function (list) {
                 $scope.list = list;
             })
+            console.log('qtyChanged');
         });
         if (!$scope.invalidVariantQty == true) {
             $scope.verifyAllVariantQtys($scope.list);
+            console.log('verifyAllVariantQtys');
         }
     };
 
     $scope.showSpecs = function(item) {
         return (Object.keys(item.Specs).length > 0);
+        console.log('showSpecs');
     };
 
     //Controller Helper Functions
@@ -209,6 +217,7 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
         AddToCartPreview.checkIfInList(lineitem, list, function (message) {
             lineitem.entryError += message;
         });
+        console.log('newEntry');
     };
 
     $scope.verifyVariantQty = function (item) {  //Variant Validation
@@ -222,6 +231,7 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
             $scope.invalidVariantQty = true;
             item.hasError = true;
         }
+        console.log('verifyVariantQty');
     };
 
     $scope.verifyAllVariantQtys = function (list) {
@@ -232,6 +242,7 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
             if (i.hasError == true) {
                 $scope.invalidVariantQty = true;
             }
+            console.log('verifyAllQuantities');
         })
     };
 
@@ -240,12 +251,14 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
         AddToCartPreview.validateTotalQty(list, function(message) {
             $scope.qtyTotalError = message;
         });
+        console.log('verifyTotalQty');
     };
 
     $scope.hideErrors = function(item) {
         $scope.qtyTotalError = "";
         item.qtyVariantError = "";
         item.entryError = "";
+        console.log('hideErrors');
     };
 }
 
@@ -255,6 +268,7 @@ function AddToCartPreview(User, Order) {
     function _then(fn, data) {
         if (angular.isFunction(fn))
             fn(data);
+            console.log('function Then');
     }
 
     function randomString() {
@@ -266,6 +280,7 @@ function AddToCartPreview(User, Order) {
             randomstring += chars.substring(rnum, rnum + 1);
         }
         return randomstring;
+        console.log('randomString');
     }
 
     var _getMinMaxTotalQty = function (lineitem) {
@@ -274,9 +289,11 @@ function AddToCartPreview(User, Order) {
             lineitem.Product.MinTotalQty = (lineitem.Product.StaticSpecGroups.listPreview.Specs.MinQty) ? +(lineitem.Product.StaticSpecGroups.listPreview.Specs.MinQty.Value) : null;
             lineitem.Product.MaxTotalQty = (lineitem.Product.StaticSpecGroups.listPreview.Specs.MaxQty) ? +(lineitem.Product.StaticSpecGroups.listPreview.Specs.MaxQty.Value) : null;
         }
+        console.log('minMaxTotalQty');
     };
 
     var _validateVariantQty = function (lineitem, success) {
+        console.log('validateVariatnQty');
         var errors = "";
         var qty = lineitem.Quantity; //entered variant order qty
         var totalVariantQty = parseInt(qty); //initialize totalVariantQty to compare inventory
@@ -303,6 +320,7 @@ function AddToCartPreview(User, Order) {
     };
 
     var _validateTotalQty = function (list, success) {
+        console.log('validateTotalQty');
         var totalQty = 0;
         var qtySubmitError = "";
         var RestrictedQty = list[0].Product.RestrictedQuantity;
@@ -319,6 +337,7 @@ function AddToCartPreview(User, Order) {
     };
 
     var _adjustForPriceBreaks = function (list, success) {
+        console.log('adjustForPriceBreaks');
         if (list[0] && !list[0].PriceSchedule.UseCumulativeQuantity) {
             angular.forEach(list, function (listobj) {
                 priceBreak(listobj, listobj.Quantity)
@@ -326,6 +345,7 @@ function AddToCartPreview(User, Order) {
             _then(success, list);
         }
         else {
+            console.log('else TotalQty0');
             var totalQty = 0;
             angular.forEach(list, function (listobj) {
                 totalQty += parseInt(listobj.Quantity);
@@ -344,11 +364,13 @@ function AddToCartPreview(User, Order) {
                 entryError = "<p>-Cannot Enter Same Variant Twice (Change Quantity Below)</p>"
             }
         });
+        console.log('checkIfInList');
         _then(success, entryError);
 
     };
 
     function priceBreak(item, quantity) {
+        console.log('priceBreak');
         if (!quantity) {
             quantity = item.Quantity;
         }
@@ -362,12 +384,30 @@ function AddToCartPreview(User, Order) {
         item.LineTotal = item.UnitPrice * item.Quantity;
     }
 
-    var _add = function (item, list, success) {
+    var _add = function (item, list, success, $scope) {
+        console.log('_add');
         if (item.Product.IsVBOSS) {
             item.UnitPrice = item.LineTotal / item.Quantity;
             angular.forEach(item.Specs, function(i){
                 angular.forEach(i.Options, function (option) {
+            
+            //begin add        
+        //  console.log(item.Product);
+        //  console.log(item.Variant);
+		//  console.log(item.Product.Specs);	
+		console.log(item.Product.Specs.Weight);
+    		//endend
+    		
+    		item.Product.Specs.ProductImage.Value = item.Product.SmallImageUrl;
+			item.Product.Specs.Weight.Value = item.Product.ShipWeight;
+                    
                     if (i.Value === option.Value) {
+                        //item.Product.Specs.Weight.Value = 1;
+                        
+                        console.log('Weight: ' + item.Specs.Weight.Value);
+                        console.log('ProductImage: ' + item.Specs.ProductImage.Value);
+                        item.Specs.ProductImage.Value = item.Product.SmallImageUrl;
+                        item.Specs.Weight.Value = item.Product.ShipWeight;
                         if (option.Markup > 0) {
                             item.Markup = option.Markup;
                         }
@@ -391,6 +431,7 @@ function AddToCartPreview(User, Order) {
     };
 
     var _remove = function (item, list, success) {
+        console.log('_removeLaterinList');
         for (var i = 0; i < list.length; i++) {
             if (list[i].ItemID == item.ItemID) {
                 list.splice(i, 1);
@@ -400,6 +441,7 @@ function AddToCartPreview(User, Order) {
     };
 
     var _update = function (item, list, success) {
+        console.log('_updateLaterInList');
         for (var i = 0; i < list.length; i++) {
             if (list[i].ItemID == item.ItemID) {
                 list[i] = item;
@@ -409,6 +451,7 @@ function AddToCartPreview(User, Order) {
     };
 
     var _addListToCart = function (list, order, user, success, error) {
+        console.log('addListTocart');
         var tempOrder = angular.copy(order);
 
         if (!tempOrder) {
@@ -423,6 +466,7 @@ function AddToCartPreview(User, Order) {
         Order.clearshipping(tempOrder).
             save(tempOrder,
             function (o) {
+                console.log('clearShipping');
                 user.CurrentOrderID = o.ID;
                 User.save(user, function () {
                     _then(success, o);
