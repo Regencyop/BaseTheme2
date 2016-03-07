@@ -14,10 +14,12 @@
                             <a ng-href="catalog/{{c.InteropID}}">
                                 <figure ng-show="c.Image.URL">
                                     <img class="catImages img-responsive" ng-src="{{c.Image.URL}}"/>
+                                    <!--<img class="catImages img-responsive" ng-src="http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/Feldco/{{c.InteropID}}.jpg"/>-->
                                 </figure>
                                 <div class="empty" ng-show="!c.Image.URL">
                                     <span class="fa empty"><i class="fa fa-camera"></i></span>
                                 </div>
+                                <h5 class="navColors" ng-bind-html="c.Name" />
                             </a>
                         </div>
                     </li>
