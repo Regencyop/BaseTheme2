@@ -409,16 +409,24 @@
 	    margin-bottom: 50px;
 	}
 	
-    .cartHeader .nav ul li .cartTitle {
-        font-size: 2.5em;
-        position: relative;
-        left: 20px;
-        top: 10px;
-    }
+	.text-info {
+	    color: #504e4a !important;
+	}
+	
+	.text-info:hover {
+	    color: #d4a527 !important;
+	}
+	
+	.cartHeader .nav ul li .cartTitle {
+	    font-size: 2.5em;
+	    position: relative;
+	    left: 20px;
+	    top: 10px;
+	}
     
-    .cf {
-        clear: both;
-    }
+	.cf {
+	    clear: both;
+	}
 
 	
 	
