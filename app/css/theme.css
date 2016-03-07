@@ -2652,7 +2652,7 @@ fieldset[disabled] .btn-link:focus {
 	}
 	.panel-category-list ul li a img {
 		margin: 0 auto;
-		max-height: 225px;
+		min-height: 225px;
 		/* width: 305px recommended for category images */
 	}
 	.panel-category-list ul li .well h5 {
