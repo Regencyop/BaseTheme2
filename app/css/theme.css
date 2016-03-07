@@ -2779,14 +2779,6 @@ fieldset[disabled] .btn-link:focus {
 
 /*checkout--cart*/
 
-.text-info {
-    color: #0d4677;
-}
-
-.text-info:hover {
-    color: #00254b;
-}
-
 .text-success {
 color: #343434;
 font-size: 1.5em;
