@@ -2338,6 +2338,7 @@ fieldset[disabled] .btn-link:focus {
 }
 .cartView .thumbnail img {
   max-height: 125px;
+  min-height: 0px;
   max-width: 100%;
   margin: 0 auto 15px;
 }
