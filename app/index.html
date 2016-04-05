@@ -15,20 +15,21 @@
     <link rel="stylesheet" href="css/animate.min.css" />
 </head>
 <!-- this animation is to mask the angularjs page flicker on initial load-->
-<!-- this animation is to mask the angularjs page flicker on initial load-->
-<body class="animated fadeIn pageLoadControl" ng-cloak ng-class="ng-cloak">
+<body class="animated fadeIn pageLoadControl" ng-class="ng-cloak">
 <section>
     <section ng-hide="Four51User.isAuthenticated() || isAnon" class="container">
         <login />
-    </section class="navAndBrandingContainer">
-        <section ng-show="Four51User.isAuthenticated()" id="navAndBrandingContainer">
+    </section>
+    <section ng-if="">
+    </section>
+    <section ng-if="Four51User.isAuthenticated()" id="navAndBrandingContainer">
         <section class="hidden-print">
             <navigation />
         </section>
         <section class="hidden-print">
             <branding />
         </section>
-    </section
+    </section>
     <!-- this animation is to create the illusion of pieces loading -->
     <section ng-show="Four51User.isAuthenticated()" class="animated fadeInDown pageLoadControl" id="content">
         <section class="container-view">
@@ -64,6 +65,7 @@
     <script src="ordercloud-specforms.js" data-group="resources"></script>
     <script src="productMatrix.js" data-group="resources"></script>
     <script src="AddToCartPreview.Js" data-group="resources"></script>
+    <script src="ngFader.js" data-group="resources"></script>
     <script src="tabsView.js" data-group="resources"></script>
 
     <script src="//maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
@@ -183,3 +185,5 @@
 
 </body>
 </html>
+
+/* need to add Google Analytics - BB*/
