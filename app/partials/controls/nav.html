@@ -1,7 +1,7 @@
-<section class="partialsNavControl">
+<section class="partialsNavControl" ng-class="{'ng-hide': isActive('catalog')}">
     <header class="header navbar navbar-inner">
         <nav tolerance='20' offset='200' class="navbar navbar-default navbar-fixed-top" role="navigation" headroom>
-            <section>
+            <div>
                 <div class="container navColorControl">
                     <ul class="nav navbar-nav pull-left">
                         <li class="back animated fadeInLeft colorControl" ng-class="{'ng-hide': isActive('catalog')}">
@@ -27,10 +27,12 @@
                     </ul>
                 </div>
                 <div class="horizontalNavLine"></div>
-            </section>
+            </div>
         </nav>
     </header>
+    <!--after First page-->
     <!--Make absolute and then float: right-->        
+    <!--ng-class based on location?-->
     <div class="cart" ng-class="{'active': 'active'}">
         <a id="451qa_cart_link" ng-show="cartCount && user.CurrentOrderID" class="cart cartPulledRightBackground" href="cart">
             <span ng-bind="cartCount" class="badge cartCountControl"></span>
