@@ -1,8 +1,9 @@
 <section class="jumbotron" ng-class="{'active': isActive('catalog')}" ng-show="user.Company.LogoUrl">
-    <div class="container">
+    <div class="container logo">
         <h2 class="thumbnail companyImageBackground" ng-show="Four51User.isAuthenticated()">
             <a ng-click="refreshUser()" href="catalog">
-                <img ng-src="{{user.Company.LogoUrl}}" />
+                <!--<img ng-src="{{user.Company.LogoUrl}}" />-->
+                <img src="https://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/viasat/exedeLogo.png" />
             </a>
             <homemessage />
         </h2>
