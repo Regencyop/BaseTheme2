@@ -1,6 +1,7 @@
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
 html {
-  font-family: sans-serif;
+  font-family: Raleway, sans-serif;
+  font-weight: 300;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -2123,7 +2124,7 @@ fieldset[disabled] .btn-link:focus {
 /*left links padding*/
 .navbar .container .navbar-nav.pull-left li a,
 .navbar .container-view .navbar-nav.pull-left li a {
-  padding: 16px 15px 34px;
+  padding: 16px 25px 34px;
 }
 .navbar .container .navbar-nav.pull-left li a span,
 .navbar .container-view .navbar-nav.pull-left li a span {
@@ -2490,10 +2491,6 @@ fieldset[disabled] .btn-link:focus {
   text-align: center;
   text-decoration: none;
 }
-.panel-category-list ul li a img {
-  margin: 0 auto;
-  max-height: 185px;
-}
 .panel-category-list ul li a .empty {
   min-height: 185px;
 }
@@ -2641,9 +2638,7 @@ fieldset[disabled] .btn-link:focus {
 	nav.nav ul li.hidden-sm {
 		display: none;
 	}
-	.panel-category-list li.col-md-6 {
-		width: 33.3333% !important;
-	}
+
 	.panel-category-list ul li .well {
 		min-height: 0;
 		padding: 0;
@@ -3042,9 +3037,6 @@ font-weight: bold;
         top: 5px;
         font-size: 2em;
     }
-    
-
-
 
 
 
