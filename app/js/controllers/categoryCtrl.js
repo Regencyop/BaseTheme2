@@ -1,6 +1,7 @@
 four51.app.controller('CategoryCtrl', ['$routeParams', '$sce', '$scope', '$451', 'Category', 'Product', 'Nav',
 function ($routeParams, $sce, $scope, $451, Category, Product, Nav) {
 	$scope.productLoadingIndicator = true;
+	$scope.checkCurrentPathname = window.location.pathname;
 	$scope.settings = {
 		currentPage: 1,
 		pageSize: 40
