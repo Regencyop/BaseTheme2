@@ -8,31 +8,75 @@
        surrounding color and background-color below those lines */
     
     .background {
-        background: none !important;
+        background: transparent !important;
     }
 
-    
-    body{
-        background: url('https://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/backgroundImage/Sunrise.jpg') no-repeat center center fixed;
+    html {
+        background-color: #8d9296;
+    }
+
+    body {
+        background-color: white;
+        /*background: url('http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/RegencyFG/rfgBacker.jpg') no-repeat center center;
         -webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        margin-bottom: 100px; */
+    }
+
+    .header {
+        background-color: #2e3338;
+       /* background: url('http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/RegencyFG/regencyHeader.jpg') no-repeat center center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover; */
     }
     
+    .jumbotron .container h2.thumbnail {
+        float: right;
+    }
     
     .companyImageBackground {
-        background-color: white !important;
+        background-color: transparent !important;
         margin: 0 auto;
-    }
-    
+    }    
+
     .container-view {
         background-color: rgba(255, 255, 255, 1);
     }
     
     #content {
-        box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.8);
+        /*box-shadow: 0px 25px 100px 0px rgba(0,0,0,0.25);*/\
+        max-width: 100%;
+        margin: 0px auto 0px;
     }
+    
+    /*------ Control of Additional Images / Categories / May need to add Products Partial Hook ------*/
+    
+    .additionalInfo {
+        width: 100%;
+        margin: 0px 0 0 0;
+    }
+    
+    .additionalInfo .firstImage {
+        float: right;
+        max-width: 80%;
+        margin: 50px 0 0;
+    }
+    
+    .additionalInfo .secondImage {
+        float: left;
+        max-width: 80%;
+        margin: 0px 0 0 0;
+    }
+    
+    .mainCategoryContainer {
+        width: 85%;
+        margin: 0 auto;
+    }
+    
     
     /* --------------Category Icon Colors-------------- */
     
@@ -52,12 +96,34 @@
         /* display: none !important; */
     }
     
+    /*transitions on hover for categories*/
+    
+    .panel-category-list ul li a img {
+    	opacity: 0.85;
+    /*	filter: grayscale(40%);
+    	-webkit-filter: grayscale(40%);*/
+	}
+    
+    .panel-category-list ul li a img:hover {
+    	opacity: 1;
+    /*	filter: grayscale(0%);
+    	-webkit-filter: grayscale(0%);*/
+	}
+	
+	.panel-category-list ul li a {
+	    color: #5c6670 !important;
+	}
+	.panel-category-list ul li a:hover {
+	    opacity: 1;
+	    color: #f26322 !important;
+	}
+    
     /* This controls the category and product names */
     
-    .navColors {
-        color: #00315a !important;
+/*    .navcolors {
+        color: #4d555b !important;
         
-    }
+    } */
     
     /* --------------navbar Colors-------------- */
     
@@ -67,22 +133,30 @@
        --This also controls the background-color 
        of the headers on !2.0_BaseTheme2and3_MainTemplate1*/
     
-    .navColorControl {
-        background: #0074c8; /* For browsers that do not support gradients */
+    .navcolorcontrol {
+        background: transparent; /* For browsers that do not support gradients */
         height: 50px;
         color: #fff;
         font-size: 1.25em;
+        z-index: 99999;
+    }
+    
+    .navbar-default {
+        background-color: transparent;
     }
     
     /* Links on left side */
     .colorControl {
         color: white !important;
         background-color: transparent !important;
+        font-family: Raleway;
+        font-weight: 700;
+        text-transform: uppercase;
     }
     
     .colorControl:hover {
         color: white !important;
-        background-color: #00315a !important;
+        background-color: #4d555b !important;
     }
     
     /* Category Dropdown Menu */
@@ -93,20 +167,83 @@
        
     .dropdown-menu {
         color: white !important;
-        background-color: #00315a !important;
+        background-color: #4d555b !important;
     }
     
     .dropdownColor a {
         color: white !important;
-        background-color: #00315a !important;
+        background-color: #4d555b !important;
     }
     
     .dropdownColor a:hover {
         color: white !important;
-        background-color: #00315a !important;
+        background-color: #4d555b !important;
         font-size: 105% !important;
         text-decoration: none !important;
     }
+    
+    
+    .normalDropdown .dropdownColor a {
+        background-color: transparent !important;
+        padding: 10px 30px; 
+        min-width: 250px;
+    }
+    
+    /*
+    
+    SideRight Menu
+    
+    */
+    
+    .noBorder {
+        border: none;
+        background-color: transparent;
+    }
+    
+    .menuBarsInit {
+        position: absolute;
+        right: -20px;
+        top: 0px;
+        z-index: 99999;
+        color: white;
+    }
+    
+    .menuBars {
+        position: absolute;
+        right: 45px;
+        top: 25px;
+        z-index: 99999;
+        color: white;
+    }
+    
+    .menuBars2 {
+        position: absolute;
+        right: 295px;
+        top: 25px;
+        z-index: 99999;
+        color: white;
+    }
+    
+    .menuRight {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        z-index: 99999;
+        height: 100vh;
+        background: rgba(92,102,102,0.75);
+    }
+
+    .additionalInfo h2 {
+        padding-left: 15px; 
+    }
+
+    .dropdownColor a {
+        background-color: transparent !important;
+        padding: 10px 30px; 
+        min-width: 250px;
+    }
+
+    
     
     /* backArrow on Left -- this appears after "page 1" */
     
@@ -128,25 +265,25 @@
     }
     
     .cartCountControl{
-        background-color: #00315a !important;
+        background-color: #999 !important;
         color: white !important;
     }
     
     .cartCountControl:hover {
-        background-color: #0a0b35 !important;
+        background-color: #d4a527 !important;
         color: white !important;
     }
     
     .shoppingCartBadge {
         background-color: none !important;
         border: none !important;
-        color: #00315a !important;
+        color: #999 !important;
         padding: 5px;
     }
     
     .shoppingCartBadge:hover {
         background-color: none !important;
-        color: black !important;
+        color: #d4a527 !important;
     }
     
     /* --------------Checkout Colors-------------- */
@@ -160,46 +297,47 @@
     }
     
     .cancelColor {
-        background-color: #00315a !important;
+        background-color: #4d555b !important;
         color: white !important;
         padding: 15px 50px;
         border-radius: 15px;
     }
     
     .cancelColor:hover {
-        background-color: #505050 !important;
+        background-color: #d4a527 !important;
     }
     
     .saveColor {
-        background-color: #00315a !important;  
+        background-color: #4d555b !important;  
         color: white !important;
         padding: 15px 50px;
         border-radius: 15px;
     }
     
     .saveColor:hover { 
-        background-color: #505050 !important;
+        background-color: #d4a527 !important;
     }
     
     .submitColor {
-        background-color: #505050 !important;
+        background-color: #4d555b !important;
         padding: 15px 120px;
         border-radius: 15px;
     }
     
     .submitColor:hover {
-        background-color: #00315a !important;
+        background-color: #d4a527 !important;
+        border-color: #bbb !important;
     }
     
     /* right side of line item */
     
     .deleteItem {
-        background-color: #0074c8 !important;
+        background-color: #d4a527 !important;
         border: none !important;
     }
     
     .deleteItem:hover {
-        background-color: #0e4678 !important;
+        background-color: #4d555b !important;
         border: none !important;
     }
     
@@ -216,20 +354,35 @@
     
     .navbar .container .navbar-nav.pull-left li ul li,
     .navbar .container-view .navbar-nav.pull-left li ul li {
-        width: 200px;
+        width: 250px;
     }
     
     /* Company Image */
     
     .jumbotron h2 img {
-	    max-height: 100px;
-    	background-color: white;
-    	margin: 10px 0 0 25px;
+	    max-height: 80px;
+	    background-color: transparent;
+	    position: relative;
+	    top: 10px;
     }
     
+    .logo .thumbnail img {
+        min-height: 50px;
+        margin-right: 50px;
+    }
+    
+    /* herehere*/
     .h3Target h3 {
         font-size: 19px;
     } 
+    
+    .shortProductViewMinimal {
+        color: #5c6670 !important;
+    }
+    
+    .shortProductViewMinimal:hover {
+        color: #f26322 !important;
+    }
     
     .empty {
         padding: 10.5px;
@@ -239,17 +392,17 @@
        of the space surrounding the main logo. */
 	
 	.jumbotron .container {
-		height: 125px;  /* custom message no */
+		height: 50px;  /* custom message no */
 		/* height: 360px;  custom message yes | ensure height matches margin-top on .navbar-fixed-top above */
 		padding: 0 0px;
-		overflow: hidden;
+		overflow: visible;
 	}
 	
 	/* This controls the height of the margin above the navbar. */
 
     .navbar-fixed-top {
 		position: static;
-		margin-top: 125px /*  custom message no */
+		margin-top: 50px /*  custom message no */
 		/* margin-top: 345px;  custom message yes | ensure margin matches height on .jumbotron .container below */
 	}
 
@@ -272,34 +425,40 @@
         -moz-animation-delay: 0s;          
     } 
     
+    .wait {
+        -webkit-animation-duration: 1s;
+        -webkit-animation-delay: 0s;
+        -ms-animation-duration: 1s;
+        -ms-animation-delay: 0s;
+        -o-animation-duration: 1s;
+        -o-animation-delay: 0s;        
+        -moz-animation-duration: 1s;
+        -moz-animation-delay: 0s;
+    }
+    
     .colorHighlight {
         padding: 25px 0 0 0;
         color: #b3d4fc;
     } 
     
     .footerContainer .colorHighlight {
-        color: #b3d4fc;
+        color: #89c1e9;
     } 
     
     .navAndBrandingContainer {
         width: 100%;
-        background-color:#0074c8;
-    }
-    
-    #content {
-        max-width: 85%;
-        margin: 0px auto 0px;
+        background-color:#d4a527;
     }
     
     .footerContainer {
         width: 100%;
         z-index: -1;
-        background-color: rgba(0,49,91,0.75);
+        background-color: #8d9296;
         color: #fff;
         font-size: 1.5em;
         line-height: 1.75em;
         text-align: center;
-        padding: 30px 30px 100px 30px;
+        padding: 50px 30px 100px 30px;
     }
     
     .officeSuppliesContainer {
@@ -325,7 +484,7 @@
         position: relative;
         font-size: 1.15em;
         background-color: rgba(235,235,235,0.3);
-        color: rgba(41,66,99,1.0);
+        color: #89c1e9;
         border-radius: 5px;
         border: 3px solid rgba(255,255,255,0.45);
     }
@@ -401,33 +560,49 @@
 		background-color: rgba(255, 255, 255, 1);
 	} */
 	
-	.backtotop {
-	    color: #999;
-	}
-	
 	.variantList {
 	    margin-bottom: 50px;
 	}
 	
+    .cartHeader .nav ul li .cartTitle {
+        font-size: 2.5em;
+        position: relative;
+        left: 20px;
+        top: 10px;
+    }
+    
+    .cf {
+        clear: both;
+    }
+
+    .panel-default, .panel-search, .panel-category-list ul li a .empty, .panel-order {
+        border-color: none;
+    }
+    
+    .panel.panel-default {
+        border: none;
+    }
+
+    .panel-body, .panel-category-list:not(.no-panels), .panel-product-list:not(.no-panels), .panel-lineitem, .panel-order-history, .panel-order-shipping-multiple {
+        padding: 20px 0 5px 0;
+    }
+
+    .panel-category-list ul li .well {
+        border: none;
+        margin-top: 50px;
+    }
+	
 	.text-info {
-	    color: #504e4a !important;
+	    color: #1da4de;
 	}
 	
 	.text-info:hover {
-	    color: #d4a527 !important;
+	    color: #89c1e9;
 	}
 	
-	.cartHeader .nav ul li .cartTitle {
-	    font-size: 2.5em;
+	copyright {
 	    position: relative;
-	    left: 20px;
-	    top: 10px;
+	    top: 35px;
+	    margin-bottom: -30px;
 	}
-    
-	.cf {
-	    clear: both;
-	}
-
-	
-	
 	
