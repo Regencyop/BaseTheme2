@@ -1269,9 +1269,148 @@ pre code {
   .col-lg-4 {
     width: 33.33333333%;
   }
+  
+  /* default
   .col-lg-3 {
     width: 25%;
+  } */
+  
+  .col-lg-3:nth-child(1) {
+    width: 25%;
   }
+  .col-lg-3:nth-child(2) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(3) {
+    width: 25%;
+  }  
+  .col-lg-3:nth-child(4) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(5) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(6) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(7) {
+    width: 33.33%;
+  }
+  /*end first two rows*/
+  
+  .col-lg-3:nth-child(8) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(9) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(10) {
+    width: 25%;
+  }  
+  .col-lg-3:nth-child(11) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(12) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(13) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(14) {
+    width: 33.33%;
+  }
+  /* End Sequence */
+  .col-lg-3:nth-child(15) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(16) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(17) {
+    width: 25%;
+  }  
+  .col-lg-3:nth-child(18) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(19) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(20) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(21) {
+    width: 33.33%;
+  }
+  /*end sequence*/
+  .col-lg-3:nth-child(22) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(23) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(24) {
+    width: 25%;
+  }  
+  .col-lg-3:nth-child(25) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(26) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(27) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(28) {
+    width: 33.33%;
+  }
+  /* End Sequence */
+
+  .col-lg-3:nth-child(29) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(30) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(31) {
+    width: 25%;
+  }  
+  .col-lg-3:nth-child(32) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(33) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(34) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(35) {
+    width: 33.33%;
+  }
+  /*end sequence*/
+  .col-lg-3:nth-child(36) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(37) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(38) {
+    width: 25%;
+  }  
+  .col-lg-3:nth-child(39) {
+    width: 25%;
+  }
+  .col-lg-3:nth-child(40) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(41) {
+    width: 33.33%;
+  }
+  .col-lg-3:nth-child(42) {
+    width: 33.33%;
+  }
+  /* End Sequence */
+
+  /* Back to your regularly scheduled programming - get it, programming? */
   .col-lg-2 {
     width: 16.66666667%;
   }
