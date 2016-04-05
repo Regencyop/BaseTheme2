@@ -7,7 +7,6 @@ function ($location, $route, $scope, $451, User) {
             User.login();
         }
     };
-
 	$scope.refreshUser = function() {
 		store.clear();
 	}
