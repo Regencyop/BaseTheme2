@@ -34,7 +34,7 @@ function ocmaskfield() {
         return [
             '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<div ng-if="customfield.Lines <= 1">',
-            '<label ng-class="{\'required\': customfield.Required}" ng-hide="label == \'hidden\'">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon" ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<input class="form-control" size="{{customfield.Width * .13}}" ng-maxlength="{{customfield.MaxLength}}" jmask="{{customfield.MaskedInput || mask}}" type="text" autocomplete="off" ng-required="{{customfield.Required}}" ng-model="customfield.Value">',
@@ -253,7 +253,7 @@ function ocselectionfield($451) {
         return [
             '<div class="view-form-icon" ng-class="{\'view-form-icon-input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<div>',
-            '<label ng-class="{\'required\': customfield.Required}" ng-hide="label == \'hidden\'">{{label || customfield.Label || customfield.Name}}</label>',
+            '<label ng-class="{\'required\': customfield.Required}">{{label || customfield.Label || customfield.Name}}</label>',
             '<div ng-class="{\'input-group\':((customfield.Prefix && !hideprefix) || (customfield.Suffix && !hidesuffix))}">',
             '<span class="input-group-addon"  ng-if="customfield.Prefix && !hideprefix && !((customfield.Prefix) == \'\')">{{customfield.Prefix}}</span>',
             '<select class="form-control" ng-init="init()" ng-required="customfield.Required" ng-change="changed()" ng-model="item" ng-options="option.Value for option in customfield.Options" ng-if="customfield.Options">',
@@ -562,7 +562,7 @@ function octextboxfield() {
         link: function(scope, elm, attr, ngModel) {
             /* Replace whatever element this directive is on with a ck-editor */
             var ck = CKEDITOR.replace(elm[0], {
-                removeButtons: 'Source'
+                removeButtons: 'Source,NumberedList,BulletedList,Outdent,Indent,Link,Unlink,Anchor'
                 /* remove or add any custom buttons as needed here */
             });
 
@@ -835,7 +835,7 @@ function getDateFromFormat(val,format) {
                 else { year=2000+(year-0); }
             }
         }
-        else if (token=="MMM"||token=="NNN"){
+        else if (token=="MMM"||token=="NNN" || token=="MMMM"||token=="NNNN"){
             month=0;
             for (var i=0; i<MONTH_NAMES.length; i++) {
                 var month_name=MONTH_NAMES[i];
@@ -843,6 +843,11 @@ function getDateFromFormat(val,format) {
                     if (token=="MMM"||(token=="NNN"&&i>11)) {
                         month=i+1;
                         if (month>12) { month -= 12; }
+                        i_val += month_name.length;
+                        break;
+                    }
+                    if (token=="MMMM"||(token=="NNNN"&&i<12)) {
+                        month=i+1;
                         i_val += month_name.length;
                         break;
                     }
