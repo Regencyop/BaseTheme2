@@ -3,7 +3,6 @@
          <nav  class="nav  backgroundControl">
              <ul>
                  <li><span  class="cartTitle  colorControlNoBackground">{{'Cart'  |  r  |  xlat}}</span></li>
-                 <li  class="pull-right"  ng-click="onPrint()"><span><i  class="fa  fa-print  text-primary"  rel="tooltip"  title="{{'Print'  |  r  |  xlat}}"  ></i></span></li>
              </ul>
          </nav>
         
@@ -188,6 +187,7 @@
              </div>
              <div  class="col-lg-12">
                  <div  class="pull-right checkoutButtonContainer">
+                     <!--<span  class=""  ng-click="onPrint()"><span><i  class="fa  fa-print  text-primary fa-2x"  rel="tooltip"  title="{{'Print'  |  r  |  xlat}}"  ></i></span></span>-->
                      <span>
                          <button  type="button"  class="checkoutBtn  smallCheckoutButton  cancelColor"  ng-click="currentOrder.Status  ==  'AwaitingApproval'  ?  cancelEdit()  :  cancelOrder()">
                              <span  ng-if="currentOrder.Status  !=  'AwaitingApproval'">{{('Cancel'  |  r)  +  '  '  +  ('Order'  |  r)  |  xlat}}</span>
