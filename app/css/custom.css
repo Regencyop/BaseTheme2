@@ -223,8 +223,20 @@
     
     .jumbotron h2 img {
 	    max-height: 100px;
-    	background-color: white;
-    	margin: 10px 0 0 25px;
+    	background-color: transparent;
+    	margin: 0px 25px 0 0px;
+    }
+    
+    /* 
+    If float left use margin: 0 0 0 25px;
+    If float: none; use margin: 0 auto;
+    If float; right; use margin: 0 25px 0 0;
+    */
+    
+    .jumbotron .container h2.thumbnail {
+        float: left;
+        /*float: right;*/
+        /*float: none;*/
     }
     
     .h3Target h3 {
