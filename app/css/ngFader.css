@@ -36,14 +36,41 @@
 }
 .ng-fader li img.show {
     opacity: 1;
-    width: auto;
-    height: 100vh;
+    min-width: 100%;
+    height: auto;
     position: relative;
 }
+
+.ng-fader a {
+    border: medium none;
+    margin: 0 0 0 41%;
+    width: 100%;
+    opacity: 0;
+    font-size: 3em;
+    color: white;
+    position: absolute;
+    -webkit-transition: opacity 1s ease 0s;
+    -moz-transition: opacity 1s ease 0s;
+    -o-transition: opacity 1s ease 0s;
+    transition: opacity 1s ease 0s;
+}
+
+.ng-fader a.show {
+    opacity: 1;
+    height: auto;
+    position: relative;
+    bottom: 50vh;
+}
+
+.ng-fader a.show:hover {
+    color: #384a9b;
+    text-decoration: none;
+}
+
 .ng-fader-pagination {
-    bottom: 10px;
+    bottom: 15vh;
     height: 20px;
-    left: 0;
+    left: 1%;
     position: absolute;
     width: auto
 }
@@ -201,7 +228,7 @@
 }
 
 
-/* Adapted to full height on large screens. Need to alter on medium and small devices-bb*/
+/* Adapted to full height on large screens. 50% functions on mobile. Best to adjust this for specific projects-bb*/
 
 
 
