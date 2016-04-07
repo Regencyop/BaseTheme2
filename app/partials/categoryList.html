@@ -1,4 +1,4 @@
-<section class="additionalInfo" ng-if="checkCurrentPathname.indexOf('41457X') == -1">
+<section class="additionalInfo" ng-if="checkCurrentPathname.indexOf('308X') == -1">
     <button type="button" ng-init="menuToggle = false" ng-click="menuToggle = !menuToggle" class="noBorder menuBarsInit">
         <span ng-show="menuToggle == false" class="menuBars animate slideInRight"><i class="fa fa-bars fa-3x"></i><br />Menu</span>
         <span ng-show="menuToggle == true" class="menuBars2 animate slideOutRight"><i class="fa fa-bars fa-3x"></i><br />Menu</span>
@@ -12,6 +12,7 @@
         </div>
     </div>                                
     <ng-fader></ng-fader>
+    <div class="keepScrolling"><i class="fa fa-chevron-down fa-4x"></i></div>
 </section>
 <scrollToALocation></scrollToALocation>
 <section class="mainCategoryContainer cf normalDropdown">
@@ -24,12 +25,13 @@
             <loadingindicator ng-show="categoryLoadingIndicator" title="{{'Please wait while we fetch all categories' | r | xlat}}" />
             <nav class="nav 451_lbl_subcatlist">
                 <ul>
+                <!--Using col-lg-3 will cause the categories to alternate each row 4, 3, 4, 3-->
                     <li class="animate wait bounceInUp col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="c in currentCategory.SubCategories">
                         <div class="well">
                             <a ng-href="catalog/{{c.InteropID}}">
                                 <figure ng-show="c.Image.URL">
-                                    <img class="catImages img-responsive" ng-src="{{c.Image.URL}}"/>
-                                    <!--<img class="catImages img-responsive" ng-src="https://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/Feldco/{{c.InteropID}}.jpg"/>-->
+                                    <!--<img class="catImages img-responsive" ng-src="{{c.Image.URL}}"/>-->
+                                    <img class="catImages img-responsive" ng-src="https://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/WWEx/categories/{{c.InteropID}}.jpg"/>
                                 </figure>
                                 <div class="empty" ng-show="!c.Image.URL">
                                     <span class="fa empty"><i class="fa fa-camera"></i></span>
