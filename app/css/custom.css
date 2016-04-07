@@ -22,7 +22,7 @@
     
     
     .companyImageBackground {
-        background-color: white !important;
+        background-color: transparent !important;
         margin: 0 auto;
     }
     
@@ -39,11 +39,11 @@
     /* this controls the backgrounds of the category icon container */
     
     .panel-default {
-        background-color: white !important;
+        background-color: transparent !important;
     }
     
     .panel-category-list {
-        background-color: white !important;
+        background-color: transparent !important;
     }
     
     /*to hide category Names, display: none; */
