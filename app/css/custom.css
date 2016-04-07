@@ -26,7 +26,7 @@
     }
 
     .header {
-        background-color: #2e3338;
+        background-color: #39499b;
        /* background: url('http://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/RegencyFG/regencyHeader.jpg') no-repeat center center;
         -webkit-background-size: cover;
         -moz-background-size: cover;
@@ -121,7 +121,7 @@
     /* This controls the category and product names */
     
 /*    .navcolors {
-        color: #4d555b !important;
+        color: #2c387d !important;
         
     } */
     
@@ -156,7 +156,7 @@
     
     .colorControl:hover {
         color: white !important;
-        background-color: #4d555b !important;
+        background-color: #2c387d !important;
     }
     
     /* Category Dropdown Menu */
@@ -167,17 +167,17 @@
        
     .dropdown-menu {
         color: white !important;
-        background-color: #4d555b !important;
+        background-color: #2c387d !important;
     }
     
     .dropdownColor a {
         color: white !important;
-        background-color: #4d555b !important;
+        background-color: #2c387d !important;
     }
     
     .dropdownColor a:hover {
         color: white !important;
-        background-color: #4d555b !important;
+        background-color: #2c387d !important;
         font-size: 105% !important;
         text-decoration: none !important;
     }
@@ -230,7 +230,11 @@
         right: 0px;
         z-index: 99999;
         height: 100vh;
-        background: rgba(92,102,102,0.75);
+        background: rgba(34,48,112,0.75);
+    }
+    
+    .menuRight h2 {
+        color: white;
     }
 
     .additionalInfo h2 {
@@ -265,25 +269,25 @@
     }
     
     .cartCountControl{
-        background-color: #999 !important;
+        background-color: #384a9b !important;
         color: white !important;
     }
     
     .cartCountControl:hover {
-        background-color: #d4a527 !important;
+        background-color: #1f2764 !important;
         color: white !important;
     }
     
     .shoppingCartBadge {
         background-color: none !important;
         border: none !important;
-        color: #999 !important;
+        color: #384a9b !important;
         padding: 5px;
     }
     
     .shoppingCartBadge:hover {
         background-color: none !important;
-        color: #d4a527 !important;
+        color: #1f2764 !important;
     }
     
     /* --------------Checkout Colors-------------- */
@@ -297,47 +301,50 @@
     }
     
     .cancelColor {
-        background-color: #4d555b !important;
+        background-color: #384a9b !important;
         color: white !important;
         padding: 15px 50px;
-        border-radius: 15px;
+        border-radius: 5px;
+        border-color: transparent;
     }
     
     .cancelColor:hover {
-        background-color: #d4a527 !important;
+        background-color: #1f2764 !important;
     }
     
     .saveColor {
-        background-color: #4d555b !important;  
+        background-color: #384a9b !important;  
         color: white !important;
         padding: 15px 50px;
-        border-radius: 15px;
+        border-radius: 5px;
+        border-color: transparent;
     }
     
     .saveColor:hover { 
-        background-color: #d4a527 !important;
+        background-color: #1f2764 !important;
     }
     
     .submitColor {
-        background-color: #4d555b !important;
+        background-color: #384a9b !important;
         padding: 15px 120px;
-        border-radius: 15px;
+        border-radius: 5px;
     }
     
     .submitColor:hover {
-        background-color: #d4a527 !important;
+        background-color: #1f2764 !important;
         border-color: #bbb !important;
+        border-color: transparent;
     }
     
     /* right side of line item */
     
     .deleteItem {
-        background-color: #d4a527 !important;
+        background-color: #384a9b !important;
         border: none !important;
     }
     
     .deleteItem:hover {
-        background-color: #4d555b !important;
+        background-color: #1f2764 !important;
         border: none !important;
     }
     
@@ -447,13 +454,13 @@
     
     .navAndBrandingContainer {
         width: 100%;
-        background-color:#d4a527;
+        background-color:#1f2764;
     }
     
     .footerContainer {
         width: 100%;
         z-index: -1;
-        background-color: #8d9296;
+        background-color: #39499b;
         color: #fff;
         font-size: 1.5em;
         line-height: 1.75em;
@@ -507,7 +514,7 @@
     .partialsNavControl .cart a {
     	position: relative;
     	float: right;
-    	margin: -104px 15px 0 0;
+    	margin: 0px 15px 0 0;
     	font-size: 1.25em;
     	z-index: 999999999;
     }
@@ -605,4 +612,14 @@
 	    top: 35px;
 	    margin-bottom: -30px;
 	}
+	
+	.keepScrolling {
+        position: relative;
+        min-width: 100%;
+        left: 48%;
+        bottom: 175px;
+        margin-bottom: -100px;
+        color: rgba(0,0,0,0.75);
+        z-index: 999;
+    }
 	
