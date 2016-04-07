@@ -1,29 +1,36 @@
 (function () {
     'use strict';
     angular.module('OrderCloud-ngFader', [])
-      .directive('ngFader', function($interval) {
+      .directive('ngFader', function($interval, $location) {
 
 	  function link(scope){
 
 		//Set your interval time. 4000 = 4 seconds
-		scope.setTime = 4000;
+		scope.setTime = 5000;
         //update if you want a different beginning url
         //could also link to categories
-        scope.imageLink = 'https://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/';
+        scope.imageLink = 'https://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/imagesFolder/WWEx/';
 		//List your images here. 
 		scope.images = [{
-			src: 'viasat/placeholders.jpg',
-			alt: 'Image 1'
+			src: 'mainImages/mainImage1.jpg',
+			alt: 'Promotional Items',
+			link: '/308/catalog/308X-promotional',
+			category: 'Promo'
 		}, {
-			src: 'viasat/placeholders2.jpg',
-			alt: 'Image 2'
+			src: 'mainImages/mainImage2.jpg',
+			alt: 'Stationery',
+			link: '/308/catalog/308X-stationery',
+			category: 'Stationery'
 		}, {
-			src: 'viasat/placeholders3.jpg',
-			alt: 'Image 3'
+			src: 'mainImages/mainImage3.jpg',
+			alt: 'WWEx',
+			link: '/308/catalog/308X-Awards',
+			category: 'Awards'
 		}];
 
 		/*****************************************************
 			STOP! NO FURTHER CODE SHOULD HAVE TO BE EDITED
+			I disagree, there is more code yet to be edited.
 		******************************************************/
 
 		//Pagination dots - gets number of images
@@ -61,11 +68,11 @@
         };
 
         scope.toggleStartStop = function() {
-          if(scope.activeStart) {
-          	scope.stopSlider();
-          } else {
-          	scope.startSlider();
-          }
+            if(scope.activeStart) {
+                scope.stopSlider();
+            } else {
+                scope.startSlider();
+            }
         };
         
         scope.startSlider = function(){
@@ -90,7 +97,7 @@
 	    template: '<div class="ng-fader">'+
 	    		//images will render here
 			'<ul>' + 
-				'<li ng-repeat="image in images" ng-click="toggleStartStop()" ng-swipe-right="sliderBack()" ng-swipe-left="sliderForward()"><img data-ng-src="{{imageLink}}{{image.src}}" data-ng-alt="{{image.alt}}" ng-class="show($index)"/></li>' + 
+				'<li ng-repeat="image in images" ng-click="toggleStartStop()" ng-swipe-right="sliderBack()" ng-swipe-left="sliderForward()"><img data-ng-src="{{imageLink}}{{image.src}}" data-ng-alt="{{image.alt}}" ng-class="show($index)"/><a ng-href="{{image.link}}" ng-class="show($index)"><i class="fa fa-globe"></i> Shop {{image.category}}</a></li>' + 
 			'</ul>' + 
 			//pagination dots will render here
 			'<div class="ng-fader-pagination">' + 
@@ -99,22 +106,22 @@
 				'</ul>' + 
 			'</div>' + 
 			//controls are here
-			'<div class="ng-fader-controls">' + 
-				'<ul>' + 
-					//'<li ng-click="sliderBack()">' + 
-					//	'<i class="ngfader-back"></i>' + 
-					//'</li>' + 
+//			'<div class="ng-fader-controls">' + 
+//				'<ul>' + 
+//                  '<li ng-click="sliderBack()">' + 
+//                  '<i class="ngfader-back"></i>' + 
+//                  '</li>' + 
 //					'<li ng-click="stopSlider()">' + 
 //						'<i class="ngfader-pause" ng-class="{\'active\': activePause}"></i>' + 
 //					'</li>' + 
 //					'<li ng-click="startSlider()">' + 
 //						'<i class="ngfader-play"  ng-class="{\'active\': activeStart}"></i>' + 
 //					'</li>' + 
-					//'<li ng-click="sliderForward()">' + 
-					//	'<i class="ngfader-forward"></i>' + 
-					//'</li>' + 
-				'</ul>' + 
-			'</div>' +
+//                  '<li ng-click="sliderForward()">' + 
+//                  '<i class="ngfader-forward"></i>' + 
+//                  '</li>' + 
+//				'</ul>' + 
+//			'</div>' +
 		'</div>',
 		link: link
 	  };
