@@ -1,3 +1,16 @@
+<style>
+    
+    .minimumScreen {
+        width: 100%;
+        background-color: rgba(155,60,60,0.9);
+        text-align: center;
+        color: #fff;
+        position: relative;
+        top: 50px;
+        padding-bottom: 65px;
+    }
+
+</style>
 <section  class="animated fadeIn pageLoadControl cartView">
      <div  ng-show="currentOrder" class="hidden-print cartHeader">
          <nav  class="nav  backgroundControl">
@@ -10,8 +23,7 @@
 		 <!--<div  ng-show="user.Permissions.contains('Comments')">Comments:  <input  type="text"  ng-model="currentOrder.Comments">  <br></div>-->
 		 <div  ng-show="user.Permissions.contains('EditPOID')">Order  ID:  <input  type="text"  ng-model="currentOrder.ExternalID"><br></div>
 		 <div  ng-show="user.Permissions.contains('CostCenterPerOrder')">Cost  Center:  <input  type="text"  ng-model="currentOrder.CostCenter"><br></div>
- <form  ng-submit="saveChanges()"  name="cart"  novalidate="">
-
+        <form  ng-submit="saveChanges()"  name="cart"  novalidate="">
              <!--<loadingindicator   ng-show="displayLoadingIndicator"  title="{{'Please  wait  while  we  save  your  order'  |  r  |  xlat}}"/>-->
              <div>
                  <cartmessage  />
@@ -200,14 +212,17 @@
                             <span>{{('Continue'  |  r)  +  '  '  +  ('Shopping'  |  r)  |  xlat}}</span>
                         </button>
                      </span>
-                     <span>
+                     <span ng-hide='minimumMet'>
                          <button  class="checkoutBtn  largeCheckoutButton  submitColor"  ng-class="{'btn-warning':  cart.$invalid,  'btn-success':  !cart.$invalid  }"  ng-click="submitPunchoutOrder()"  ng-disabled="cart.$invalid">
                              <i  ng-show="cart.$invalid"  class="fa  fa-warning"></i>
                              <span>{{'Submit'  |  r  |  xlat}}  {{window.outerWidth}}</span>
                          </button>
                      </span>
                  </div>
-             </div>            
+             </div>
+            <span ng-show='minimumMet'>
+                <p class='minimumScreen'>Minimum order quantity for all combined screen printed items is {{setMinimum}}.<br/>You currently have {{currentQuantityTotal}} screen printed items in your cart. <br/><br/> Please add a total of {{additionalItems}} items to your cart from the following list: <br/>| {{itemOptions}}</p>
+            </span>
 		 </form>
 		
 
@@ -258,6 +273,7 @@
 		 </div>
 	 </form>
      <cartprint  class="visible-print"  />
+
  </section>
 
 
