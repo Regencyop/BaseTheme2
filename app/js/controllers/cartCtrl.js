@@ -1,6 +1,12 @@
 four51.app.controller('CartViewCtrl', ['$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User', 'Punchout', '$sce', '$timeout', '$window',
 function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punchout, $sce, $timeout, $window) {
 
+//update this for the items to achieve a minimum total order
+
+    var itemProdIds = ['item1','item2'];
+    var setMinimum = 4;
+    var minimumTotal = 0;    
+    
 	if($scope.PunchoutSession.PunchoutOperation != "Inspect")
 
 //  **** Do not adjust the line below unless it is already a LIVE PUNCHOUT site, there is no other need to adjust it
@@ -114,6 +120,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 			Order.deletelineitem($scope.currentOrder.ID, item.ID,
 				function(order) {
 					$scope.currentOrder = order;
+					minimumTotal = 0;
 					Order.clearshipping($scope.currentOrder);
 					if (!order) {
 						$scope.user.CurrentOrderID = null;
@@ -155,6 +162,30 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 		angular.forEach($scope.currentOrder.LineItems, function(item){
 			newTotal += item.LineTotal;
 		});
+        var totalQuantity = 0;
+        var itemCombo1 = {itemProdIds : {
+                                currentQuantity:0}};
+        angular.forEach($scope.currentOrder.LineItems, function(item){
+            itemCombo1.itemProdIds.currentQuantity = item.Quantity;
+            console.log(itemCombo1.itemProdIds.currentQuantity);
+            	var checkItems;
+            	for (i = 0; i < itemProdIds.length; i++) { 
+                    checkItems = itemProdIds[i];
+            	    console.log(checkItems);
+    	            if (item.Product.ExternalID.indexOf(checkItems) !== -1) {
+                		totalQuantity = totalQuantity + itemCombo1.itemProdIds.currentQuantity;
+                		console.log('total: ' + totalQuantity);
+                		minimumTotal = setMinimum;
+                	}
+                	if(totalQuantity < minimumTotal) {
+            			$scope.minimumMet = true;
+                	}
+                	if(totalQuantity >= minimumTotal) {
+                	    $scope.minimumMet = false;
+                	}
+            	}
+        });
+		
 		$scope.currentOrder.Subtotal = newTotal;
 	}, true);
 
