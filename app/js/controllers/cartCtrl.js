@@ -3,8 +3,8 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 
 //update this for the items to achieve a minimum total order
 
-    var itemProdIds = ['BEENV2C','BE_Spine/Cover'];
-    $scope.setMinimum = 4;
+    var itemProdIds = ['item1','item2'];
+    $scope.setMinimum = 24;
     var minimumTotal = 0;    
     
 	if($scope.PunchoutSession.PunchoutOperation != "Inspect")
