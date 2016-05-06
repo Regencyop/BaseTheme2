@@ -1,1 +1,9 @@
-/*do not make changes to this file. It will be overwritten by the css editor. Put theme changes in custom.css*/
+    .minimumScreen {
+        width: 100%;
+        background-color: rgba(155,60,60,0.9);
+        text-align: center;
+        color: #fff;
+        position: relative;
+        top: 50px;
+        padding-bottom: 65px;
+    }
