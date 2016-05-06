@@ -3,8 +3,8 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 
 //update this for the items to achieve a minimum total order
 
-    var itemProdIds = ['item1','item2'];
-    var setMinimum = 4;
+    var itemProdIds = ['BEENV2C','BE_Spine/Cover'];
+    $scope.setMinimum = 4;
     var minimumTotal = 0;    
     
 	if($scope.PunchoutSession.PunchoutOperation != "Inspect")
@@ -158,24 +158,29 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 
 	$scope.$watch('currentOrder.LineItems', function(newval) {
 		var newTotal = 0;
+		$scope.itemOptions = '';
 		if (!$scope.currentOrder) return newTotal;
 		angular.forEach($scope.currentOrder.LineItems, function(item){
 			newTotal += item.LineTotal;
 		});
         var totalQuantity = 0;
         var itemCombo1 = {itemProdIds : {
-                                currentQuantity:0}};
+                                currentQuantity:0,
+                                itemName:''
+        }};
         angular.forEach($scope.currentOrder.LineItems, function(item){
             itemCombo1.itemProdIds.currentQuantity = item.Quantity;
-            console.log(itemCombo1.itemProdIds.currentQuantity);
             	var checkItems;
             	for (i = 0; i < itemProdIds.length; i++) { 
                     checkItems = itemProdIds[i];
             	    console.log(checkItems);
     	            if (item.Product.ExternalID.indexOf(checkItems) !== -1) {
                 		totalQuantity = totalQuantity + itemCombo1.itemProdIds.currentQuantity;
-                		console.log('total: ' + totalQuantity);
-                		minimumTotal = setMinimum;
+                		$scope.currentQuantityTotal=totalQuantity;
+                		itemCombo1.itemProdIds.itemName = item.Product.Name;
+                		$scope.itemOptions += itemCombo1.itemProdIds.itemName + ' | ';
+                		minimumTotal = $scope.setMinimum;
+                		$scope.additionalItems = minimumTotal - totalQuantity;
                 	}
                 	if(totalQuantity < minimumTotal) {
             			$scope.minimumMet = true;
