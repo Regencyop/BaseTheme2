@@ -52,6 +52,9 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
                     idOfProduct = $scope.currentOrder.LineItems[increment].Product.ExternalID;
                     imageURL = $scope.currentOrder.LineItems[increment].Product.LargeImageUrl;
                     shippingWeight = $scope.currentOrder.LineItems[increment].Product.ShipWeight;
+                        if (shippingWeight===null){
+                            shippingWeight = 1;
+                        }
                     productInformation[idOfProduct] = { itemWeight : shippingWeight, thalerusURL : imageURL};
                     // update and-or add pieces
                             if (lineItemString[increment].indexOf("ProductImage") === -1) {
