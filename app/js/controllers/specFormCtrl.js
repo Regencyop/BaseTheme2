@@ -55,5 +55,4 @@ function ($scope, $location, $route, $routeParams, $window, ProductDisplayServic
 		$scope.loadingImage = !result;
 		$scope.$apply();
 	});
-    });
 }]);
