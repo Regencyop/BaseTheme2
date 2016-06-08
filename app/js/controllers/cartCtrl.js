@@ -11,11 +11,15 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
     minimumTotal = 0;
     itemLines = $scope.currentOrder.LineItems;
     
+    // var checkCheck = $scope.currentOrder.LineItems[0].Product;
+    
 	if($scope.PunchoutSession.PunchoutOperation != "Inspect")
-//  **** Do not adjust the line below unless it is already a LIVE PUNCHOUT site, there is no other need to adjust it
+//  *******************************************************************************************************************
+//  Do not adjust the line below unless it is already a LIVE PUNCHOUT site, there is no other need to adjust it
 //  This must absolutely be set to $scope.PunchoutSession = Punchout.punchoutSession; 
 //  in order for the site to function correctly when live ****
 //  If it is a 1.0 or new site, you can test the 2.0 site via the user/vibenet login without these overrides
+//  *******************************************************************************************************************
     $scope.punchouturl = $sce.trustAsResourceUrl(Punchout.punchoutSession.PunchOutPostURL);
 	$scope.submitPunchoutOrder = function(){
 		//begin XML manipulation
@@ -32,35 +36,51 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
                 decodedString = Base64.decode(string);
                 lineItemString = decodedString.split('</ItemDetail>');
                 for (increment = 0; increment < lineItemString.length-1; increment++) {
-                    idOfProduct = $scope.currentOrder.LineItems[increment].Product.ExternalID;
+                    //idOfProduct = $scope.currentOrder.LineItems[0].ProductIDText;
                     imageURL = $scope.currentOrder.LineItems[increment].Product.LargeImageUrl;
+                    idOfProduct = $scope.currentOrder.LineItems[increment].ProductIDText;
+                    if (idOfProduct.indexOf(" - ") !== -1) {
+                        idOfProduct = idOfProduct.replace(" - ", "");
+                        console.log(idOfProduct);
+                    }
                     shippingWeight = $scope.currentOrder.LineItems[increment].Product.ShipWeight;
-                        if (shippingWeight===null){
-                            shippingWeight = 1;
-                        }
                     productInformation[idOfProduct] = { itemWeight : shippingWeight, thalerusURL : imageURL};
                     // update and-or add pieces
+                            //ProductImage
                             if (lineItemString[increment].indexOf("ProductImage") === -1) {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
                                 console.log('before | ' + newStrings);
                                 updatedString = newStrings[0] + '<Extrinsic name="ProductSpecs"><Extrinsic name="ProductImage">' + imageURL + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
-                            }
-                            else {
+                            } else {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
                                 newStrings[1] = newStrings[1].substring(newStrings[1].indexOf("</Extrinsic>") );
                                 updatedString = newStrings[0] + '<Extrinsic name="ProductImage">' + imageURL + newStrings[1];
                             }
+                            //Weight
                             if (lineItemString[increment].indexOf("Weight") === -1) {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
                                 updatedString = newStrings[0] + '<Extrinsic name="ProductSpecs"><Extrinsic name="Weight">' + shippingWeight + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
-                            } 
-                            else {
+                            } else {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="Weight">');
                                 newStrings[1] = newStrings[1].substring(newStrings[1].indexOf("</Extrinsic>") );
                                 updatedString = newStrings[0] + '<Extrinsic name="Weight">' + shippingWeight + newStrings[1];
                             }
+                            //VibeItemId
+                            if (lineItemString[increment].indexOf("VibeItemID") === -1) {
+                                console.log('lineItemString | ' + lineItemString);
+                                newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
+                                updatedString = newStrings[0] + '<Extrinsic name="ProductSpecs"><Extrinsic name="VibeItemID">' + idOfProduct + '</Extrinsic>' + newStrings[1];
+                                newStrings = lineItemString[increment] = updatedString;
+                            } else {
+                                newStrings = lineItemString[increment].split('<Extrinsic name="VibeItemID">');
+                                newStrings[1] = newStrings[1].substring(newStrings[1].indexOf("</Extrinsic>") );
+                                updatedString = newStrings[0] + '<Extrinsic name="VibeItemID">' + idOfProduct + newStrings[1];
+                            }
+
+                            console.log('finalizedString | ' + finalizedString);
+                            
                         finalizedString += updatedString + '</ItemDetail>';
                 }    
                 //add final object to cXML String
