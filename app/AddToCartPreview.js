@@ -368,21 +368,8 @@ function AddToCartPreview(User, Order) {
             item.UnitPrice = item.LineTotal / item.Quantity;
             angular.forEach(item.Specs, function(i){
                 angular.forEach(i.Options, function (option) {
-            
-            //begin add        
-    
-    
-	
-    		//endend
-    		
-    		item.Product.Specs.ProductImage.Value = item.Product.SmallImageUrl;
-			item.Product.Specs.Weight.Value = item.Product.ShipWeight;
                     
                     if (i.Value === option.Value) {
-                        //item.Product.Specs.Weight.Value = 1;
-                        
-                        item.Specs.ProductImage.Value = item.Product.SmallImageUrl;
-                        item.Specs.Weight.Value = item.Product.ShipWeight;
                         if (option.Markup > 0) {
                             item.Markup = option.Markup;
                         }
