@@ -55,20 +55,5 @@ function ($scope, $location, $route, $routeParams, $window, ProductDisplayServic
 		$scope.loadingImage = !result;
 		$scope.$apply();
 	});
-	
-	//updating Weight and Product Image Value Dynamically - BB. Based on code originally written by Four51 in Case #124640 and #127497
-	$scope.$watch('Variant', function(val) {
-        if (!val) return;
-        angular.forEach(val.Specs, function(s){
-            if(s.Value == "null"){
-                s.Value = "";
-            }
-            if (s.Name == "Weight") {
-                s.Value = $scope.Product.ShipWeight;
-            }
-            if (s.Name == "ProductImage") {
-                s.Value = $scope.Product.SmallImageUrl;
-            }
-        });
     });
 }]);
