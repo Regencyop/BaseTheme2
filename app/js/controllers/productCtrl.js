@@ -31,13 +31,6 @@ function ($scope, $routeParams, $route, $location, $451, Product, ProductDisplay
 			$scope.$broadcast('ProductGetComplete');
 			$scope.loadingIndicator = false;
 			$scope.setAddToOrderErrors();
-			// Dynamically assigning value of ProductImage and Weight Spec Values if not Variable
-			// Also doing this in SpecformCtrl.js and addToCartPreview.js
-            if ($scope.LineItem.Product.Type != 'VariableText') {
-                $scope.LineItem.Specs.ProductImage.Value = data.product.SmallImageUrl;
-    		    $scope.LineItem.Specs.Weight.Value = data.product.ShipWeight;
-            }
-            //end redefine
 			if (angular.isFunction(callback))
 				callback();
 		}, $scope.settings.currentPage, $scope.settings.pageSize, searchTerm);
