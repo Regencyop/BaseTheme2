@@ -9,6 +9,26 @@ function ($scope, $route, $location, $451, Punchout, User, Order, Security, Orde
 			$route.reload();
 		});
 	}
+	
+	    //get user Data
+    User.get(function (user) {
+        $scope.user = user;
+        var nn = user;
+        console.log(nn); 
+    });
+
+	//get companyId
+	var companyId = $scope.companyId = document.getElementsByTagName('base')[0].attributes[0].value.replace(/[^0-9]+/g, '');
+    
+    //check for current Background Property. If is set to FTP link, ignore. If not, redefine. If color, same...
+    $scope.currentBackgroundPropertyUrl = window.getComputedStyle(document.body).getPropertyValue('background').indexOf('df7e2b71-6326-4da6-a24f-554d7d910faf');
+    $scope.currentBackgroundPropertyHex = window.getComputedStyle(document.body).getPropertyValue('background').indexOf('#');
+    if ($scope.currentBackgroundPropertyUrl === -1 || $scope.currentBackgroundPropertyHex === -1) {
+        document.body.style.background = "url('https://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/companyId/" + companyId + "/" + companyId + "-bgbody.jpg') no-repeat center center fixed";
+        document.body.style.backgroundSize = "cover";
+    }
+    
+	
 
 	// fix Bootstrap fixed-top and fixed-bottom from jumping around on mobile input when virtual keyboard appears
 	if ($(window).width() < 960) {
