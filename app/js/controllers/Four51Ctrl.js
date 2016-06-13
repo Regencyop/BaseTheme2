@@ -11,10 +11,8 @@ function ($scope, $route, $location, $451, Punchout, User, Order, Security, Orde
 	}
 	
 	    //get user Data
-    User.get(function (user) {
-        $scope.user = user;
-        var nn = user;
-        console.log(nn); 
+    User.get(function (user, data) {
+        $scope.userData = user;
     });
 
 	//get companyId
@@ -23,7 +21,7 @@ function ($scope, $route, $location, $451, Punchout, User, Order, Security, Orde
     //check for current Background Property. If is set to FTP link, ignore. If not, redefine. If color, same...
     $scope.currentBackgroundPropertyUrl = window.getComputedStyle(document.body).getPropertyValue('background').indexOf('df7e2b71-6326-4da6-a24f-554d7d910faf');
     $scope.currentBackgroundPropertyHex = window.getComputedStyle(document.body).getPropertyValue('background').indexOf('#');
-    if ($scope.currentBackgroundPropertyUrl === -1 || $scope.currentBackgroundPropertyHex === -1) {
+    if ($scope.currentBackgroundPropertyUrl === -1 && $scope.currentBackgroundPropertyHex === -1) {
         document.body.style.background = "url('https://www.four51.com/Themes/Custom/df7e2b71-6326-4da6-a24f-554d7d910faf/companyId/" + companyId + "/" + companyId + "-bgbody.jpg') no-repeat center center fixed";
         document.body.style.backgroundSize = "cover";
     }
@@ -41,6 +39,7 @@ function ($scope, $route, $location, $451, Punchout, User, Order, Security, Orde
 			});
 	}
 	$scope.PunchoutSession = Punchout.punchoutSession;
+
 
 	if($scope.PunchoutSession.PunchOutOperation == 'Edit') $location.path('cart');
 	else if($scope.PunchoutSession.PunchoutLandingCategory) $location.path('catalog/' + $scope.PunchoutSession.PunchoutLandingCategory);
