@@ -1,7 +1,7 @@
 four51.app.controller('CartViewCtrl', ['$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User', 'Punchout', '$sce', '$timeout', '$window',
 function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punchout, $sce, $timeout, $window) {
     //var declarations
-    var Base64, decodedString, productImagePosition, weightPosition, newStrings, updatedString, encodedXMLString, updatedXML, itemProdIds, minimumTotal, string, itemLines, inc, shippingWeight, idOfProduct, lineItemString, finalizedString = '', productInformation = {};
+    var Base64, decodedString, productImagePosition, weightPosition, newStrings, updatedString, valueAssignment, encodedXMLString, updatedXML, itemProdIds, minimumTotal, string, itemLines, inc, shippingWeight, idOfProduct, lineItemString, finalizedString = '', productInformation = {};
     //$scope.LineItem.Specs.Weight.Value = data.product.ShipWeight;
 
 //update this for the items to achieve a minimum total order
@@ -33,54 +33,47 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
                 for (increment = 0; increment < lineItemString.length-1; increment++) {
                     //idOfProduct = $scope.currentOrder.LineItems[0].ProductIDText;
                     imageURL = $scope.currentOrder.LineItems[increment].Product.LargeImageUrl;
-                    idOfProduct = $scope.currentOrder.LineItems[increment].ProductIDText;
-                    if (idOfProduct.indexOf(" - ") !== -1) {
-                        idOfProduct = idOfProduct.replace(" - ", "");
-                        console.log(idOfProduct);
-                    }
+                    idOfProduct = $scope.currentOrder.LineItems[increment].ProductIDText.replace(' - ','');
                     shippingWeight = $scope.currentOrder.LineItems[increment].Product.ShipWeight;
-                    productInformation[idOfProduct] = { itemWeight : shippingWeight, thalerusURL : imageURL};
+                    productInformation[increment] = { itemWeight : shippingWeight, thalerusURL : imageURL, vibeID : idOfProduct};
                     // update and-or add pieces
                             //ProductImage
                             if (lineItemString[increment].indexOf("ProductImage") === -1) {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
-                                console.log('before | ' + newStrings);
                                 updatedString = newStrings[0] + '<Extrinsic name="ProductSpecs"><Extrinsic name="ProductImage">' + imageURL + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
                             } else {
-                                newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
-                                newStrings[1] = newStrings[1].substring(newStrings[1].indexOf("</Extrinsic>") );
-                                updatedString = newStrings[0] + '<Extrinsic name="ProductImage">' + imageURL + newStrings[1];
+                                newStrings = lineItemString[increment].split('<Extrinsic name="ProductImage">');
+                                newStrings[1] = newStrings[1].replace('</Extrinsic>','');
+                                updatedString = newStrings[0] + '<Extrinsic name="ProductImage">' + imageURL + '</Extrinsic>' + newStrings[1];
+                                newStrings = lineItemString[increment] = updatedString;
                             }
-                            //Weight
+                            
                             if (lineItemString[increment].indexOf("Weight") === -1) {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
                                 updatedString = newStrings[0] + '<Extrinsic name="ProductSpecs"><Extrinsic name="Weight">' + shippingWeight + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
                             } else {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="Weight">');
-                                newStrings[1] = newStrings[1].substring(newStrings[1].indexOf("</Extrinsic>") );
-                                updatedString = newStrings[0] + '<Extrinsic name="Weight">' + shippingWeight + newStrings[1];
+                                newStrings[1] = newStrings[1].replace('</Extrinsic>','');
+                                updatedString = newStrings[0] + '<Extrinsic name="Weight">' + shippingWeight + '</Extrinsic>' + newStrings[1];
+                                newStrings = lineItemString[increment] = updatedString;
                             }
-                            //VibeItemId
+                            
                             if (lineItemString[increment].indexOf("VibeItemID") === -1) {
-                                console.log('lineItemString | ' + lineItemString);
                                 newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
                                 updatedString = newStrings[0] + '<Extrinsic name="ProductSpecs"><Extrinsic name="VibeItemID">' + idOfProduct + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
                             } else {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="VibeItemID">');
-                                newStrings[1] = newStrings[1].substring(newStrings[1].indexOf("</Extrinsic>") );
-                                updatedString = newStrings[0] + '<Extrinsic name="VibeItemID">' + idOfProduct + newStrings[1];
+                                newStrings[1] = newStrings[1].replace('</Extrinsic>','');
+                                updatedString = newStrings[0] + '<Extrinsic name="VibeItemID">' + idOfProduct + '</Extrinsic>' + newStrings[1];
+                                newStrings = lineItemString[increment] = updatedString;
                             }
-
-                            console.log('finalizedString | ' + finalizedString);
-                            
                         finalizedString += updatedString + '</ItemDetail>';
-                }    
+                }    console.log(finalizedString);
                 //add final object to cXML String
                 finalizedString += lineItemString[lineItemString.length-1];
-                console.log(finalizedString);
                 encodedcXMLString = btoa(finalizedString);
                 $window.document.getElementById('punchoutForm').getElementsByTagName('input')[0].setAttribute('value', encodedcXMLString);
                 updatedXML = $window.document.getElementById('punchoutForm');
