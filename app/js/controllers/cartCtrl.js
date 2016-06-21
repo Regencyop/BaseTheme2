@@ -13,6 +13,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
     var minimumTotal;
     var string;
     var itemLines;
+    //
     var inc;
     var shippingWeight;
     var idOfProduct;
