@@ -35,6 +35,9 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
                     imageURL = $scope.currentOrder.LineItems[increment].Product.LargeImageUrl;
                     idOfProduct = $scope.currentOrder.LineItems[increment].ProductIDText.replace(' - ','');
                     shippingWeight = $scope.currentOrder.LineItems[increment].Product.ShipWeight;
+                    if (shippingWeight === null) {
+                        shippingWeight = 1;
+                    }
                     productInformation[increment] = { itemWeight : shippingWeight, thalerusURL : imageURL, vibeID : idOfProduct};
                     // update and-or add pieces
                             //ProductImage
@@ -71,7 +74,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
                                 newStrings = lineItemString[increment] = updatedString;
                             }
                         finalizedString += updatedString + '</ItemDetail>';
-                }    console.log(finalizedString);
+                }
                 //add final object to cXML String
                 finalizedString += lineItemString[lineItemString.length-1];
                 encodedcXMLString = btoa(finalizedString);
