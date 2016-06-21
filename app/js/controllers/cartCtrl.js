@@ -10,9 +10,6 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
     $scope.setMinimum = 24;
     minimumTotal = 0;
     itemLines = $scope.currentOrder.LineItems;
-    
-    // var checkCheck = $scope.currentOrder.LineItems[0].Product;
-    
 	if($scope.PunchoutSession.PunchoutOperation != "Inspect")
 //  *******************************************************************************************************************
 //  Do not adjust the line below unless it is already a LIVE PUNCHOUT site, there is no other need to adjust it
