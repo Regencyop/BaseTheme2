@@ -1,25 +1,7 @@
 four51.app.controller('CartViewCtrl', ['$scope', '$routeParams', '$location', '$451', 'Order', 'OrderConfig', 'User', 'Punchout', '$sce', '$timeout', '$window',
 function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punchout, $sce, $timeout, $window) {
     //var declarations
-    var Base64;
-    var decodedString;
-    var productImagePosition;
-    var weightPosition;
-    var newStrings;
-    var updatedString;
-    var encodedXMLString;
-    var updatedXML;
-    var itemProdIds;
-    var minimumTotal;
-    var string;
-    var itemLines;
-    //
-    var inc;
-    var shippingWeight;
-    var idOfProduct;
-    var lineItemString;
-    var finalizedString = '';
-    var productInformation = {};
+    var Base64, decodedString, productImagePosition, weightPosition, newStrings, updatedString, valueAssignment, encodedXMLString, updatedXML, itemProdIds, minimumTotal, string, itemLines, inc, shippingWeight, idOfProduct, lineItemString, finalizedString = '', productInformation = {};
     //$scope.LineItem.Specs.Weight.Value = data.product.ShipWeight;
 
 //update this for the items to achieve a minimum total order
@@ -29,11 +11,15 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
     minimumTotal = 0;
     itemLines = $scope.currentOrder.LineItems;
     
+    // var checkCheck = $scope.currentOrder.LineItems[0].Product;
+    
 	if($scope.PunchoutSession.PunchoutOperation != "Inspect")
-//  **** Do not adjust the line below unless it is already a LIVE PUNCHOUT site, there is no other need to adjust it
+//  *******************************************************************************************************************
+//  Do not adjust the line below unless it is already a LIVE PUNCHOUT site, there is no other need to adjust it
 //  This must absolutely be set to $scope.PunchoutSession = Punchout.punchoutSession; 
-//  in order for the site to function correctly when live ****
+//  in order for the site to function correctly when live
 //  If it is a 1.0 or new site, you can test the 2.0 site via the user/vibenet login without these overrides
+//  *******************************************************************************************************************
     $scope.punchouturl = $sce.trustAsResourceUrl(Punchout.punchoutSession.PunchOutPostURL);
 	$scope.submitPunchoutOrder = function(){
 		//begin XML manipulation
@@ -42,46 +28,53 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
 			$scope.punchoutForm = form;
 			$timeout(function(){
 			    string = $window.document.getElementById('punchoutForm').getElementsByTagName('input')[0].getAttribute('value');
-                //decode from scotch.io
-                Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
-                    encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},
-                    decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9+/=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
-                // decode and store as decodedString
-                decodedString = Base64.decode(string);
+                decodedString = atob(string);
                 lineItemString = decodedString.split('</ItemDetail>');
                 for (increment = 0; increment < lineItemString.length-1; increment++) {
-                    idOfProduct = $scope.currentOrder.LineItems[increment].Product.ExternalID;
+                    //idOfProduct = $scope.currentOrder.LineItems[0].ProductIDText;
                     imageURL = $scope.currentOrder.LineItems[increment].Product.LargeImageUrl;
+                    idOfProduct = $scope.currentOrder.LineItems[increment].ProductIDText.replace(' - ','');
                     shippingWeight = $scope.currentOrder.LineItems[increment].Product.ShipWeight;
-                    productInformation[idOfProduct] = { itemWeight : shippingWeight, thalerusURL : imageURL};
+                    productInformation[increment] = { itemWeight : shippingWeight, thalerusURL : imageURL, vibeID : idOfProduct};
                     // update and-or add pieces
+                            //ProductImage
                             if (lineItemString[increment].indexOf("ProductImage") === -1) {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
-                                console.log('before | ' + newStrings);
                                 updatedString = newStrings[0] + '<Extrinsic name="ProductSpecs"><Extrinsic name="ProductImage">' + imageURL + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
+                            } else {
+                                newStrings = lineItemString[increment].split('<Extrinsic name="ProductImage">');
+                                newStrings[1] = newStrings[1].replace('</Extrinsic>','');
+                                updatedString = newStrings[0] + '<Extrinsic name="ProductImage">' + imageURL + '</Extrinsic>' + newStrings[1];
+                                newStrings = lineItemString[increment] = updatedString;
                             }
-                            else {
-                                newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
-                                newStrings[1] = newStrings[1].substring(newStrings[1].indexOf("</Extrinsic>") );
-                                updatedString = newStrings[0] + '<Extrinsic name="ProductImage">' + imageURL + newStrings[1];
-                            }
+                            
                             if (lineItemString[increment].indexOf("Weight") === -1) {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
                                 updatedString = newStrings[0] + '<Extrinsic name="ProductSpecs"><Extrinsic name="Weight">' + shippingWeight + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
-                            } 
-                            else {
+                            } else {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="Weight">');
-                                newStrings[1] = newStrings[1].substring(newStrings[1].indexOf("</Extrinsic>") );
-                                updatedString = newStrings[0] + '<Extrinsic name="Weight">' + shippingWeight + newStrings[1];
+                                newStrings[1] = newStrings[1].replace('</Extrinsic>','');
+                                updatedString = newStrings[0] + '<Extrinsic name="Weight">' + shippingWeight + '</Extrinsic>' + newStrings[1];
+                                newStrings = lineItemString[increment] = updatedString;
+                            }
+                            
+                            if (lineItemString[increment].indexOf("VibeItemID") === -1) {
+                                newStrings = lineItemString[increment].split('<Extrinsic name="ProductSpecs">');
+                                updatedString = newStrings[0] + '<Extrinsic name="ProductSpecs"><Extrinsic name="VibeItemID">' + idOfProduct + '</Extrinsic>' + newStrings[1];
+                                newStrings = lineItemString[increment] = updatedString;
+                            } else {
+                                newStrings = lineItemString[increment].split('<Extrinsic name="VibeItemID">');
+                                newStrings[1] = newStrings[1].replace('</Extrinsic>','');
+                                updatedString = newStrings[0] + '<Extrinsic name="VibeItemID">' + idOfProduct + '</Extrinsic>' + newStrings[1];
+                                newStrings = lineItemString[increment] = updatedString;
                             }
                         finalizedString += updatedString + '</ItemDetail>';
-                }    
+                }
                 //add final object to cXML String
                 finalizedString += lineItemString[lineItemString.length-1];
-                console.log(finalizedString);
-                encodedcXMLString = Base64.encode(finalizedString);
+                encodedcXMLString = btoa(finalizedString);
                 $window.document.getElementById('punchoutForm').getElementsByTagName('input')[0].setAttribute('value', encodedcXMLString);
                 updatedXML = $window.document.getElementById('punchoutForm');
                 updatedXML.submit();
