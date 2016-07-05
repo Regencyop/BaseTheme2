@@ -44,7 +44,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
                                 newStrings = lineItemString[increment] = updatedString;
                             } else {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="ProductImage">');
-                                newStrings[1] = newStrings[1].replace('</Extrinsic>','');
+                                newStrings[1] = newStrings[1].substring(newStrings[1].indexOf(">") + 1);
                                 updatedString = newStrings[0] + '<Extrinsic name="ProductImage">' + imageURL + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
                             }
@@ -55,7 +55,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
                                 newStrings = lineItemString[increment] = updatedString;
                             } else {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="Weight">');
-                                newStrings[1] = newStrings[1].replace('</Extrinsic>','');
+                                newStrings[1] = newStrings[1].substring(newStrings[1].indexOf(">") + 1);
                                 updatedString = newStrings[0] + '<Extrinsic name="Weight">' + shippingWeight + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
                             }
@@ -66,7 +66,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
                                 newStrings = lineItemString[increment] = updatedString;
                             } else {
                                 newStrings = lineItemString[increment].split('<Extrinsic name="VibeItemID">');
-                                newStrings[1] = newStrings[1].replace('</Extrinsic>','');
+                                newStrings[1] = newStrings[1].substring(newStrings[1].indexOf(">") + 1);
                                 updatedString = newStrings[0] + '<Extrinsic name="VibeItemID">' + idOfProduct + '</Extrinsic>' + newStrings[1];
                                 newStrings = lineItemString[increment] = updatedString;
                             }
