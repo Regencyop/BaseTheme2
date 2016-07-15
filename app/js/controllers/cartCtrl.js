@@ -28,7 +28,7 @@ function ($scope, $routeParams, $location, $451, Order, OrderConfig, User, Punch
                 decodedString = atob(string);
                 lineItemString = decodedString.split('</ItemDetail>');
                 for (increment = 0; increment < lineItemString.length-1; increment++) {
-                    if ($scope.currentOrder.LineItems[increment].Product.LargeImageUrl === null && imageURL !==null) {
+                    if ($scope.currentOrder.LineItems[increment].Product.LargeImageUrl === null && imageURL !== null) {
                         $scope.currentOrder.LineItems[increment].Product.LargeImageUrl = imageURL;
                     }
                     imageURL = $scope.currentOrder.LineItems[increment].Product.LargeImageUrl;
