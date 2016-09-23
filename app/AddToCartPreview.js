@@ -55,6 +55,7 @@ function addtocartpreview() {
             '<span style="z-index: 999999;">Add to List</span>',
             '</button>',
             '<div>',
+            '<div class="errorLogContainterEmpty"></div>',
             '<p ng-if="lineitem.Product.MinTotalQty"><span class="text-info">Minimum Total Order Quantity: </span>{{lineitem.Product.MinTotalQty}}</p>',
             '<p ng-if="lineitem.Product.MaxTotalQty"><span class="text-info">Maximum Total Order Quantity: </span>{{lineitem.Product.MaxTotalQty}}</p>',
             '<div class="row alert alert-danger fadeOut" ng-show="lineitem.entryError" ng-bind-html="lineitem.entryError"></div>',
@@ -128,7 +129,19 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
     });
     $scope.$watch("lineitem.Variant.InteropID", function (newval) {
         if (!newval) return;
+        if (!('remove' in Element.prototype)) {
+    	    Element.prototype.remove = function() {
+    	        if (this.parentNode) {
+    	            this.parentNode.removeChild(this);
+    	        }
+    	    };
+    	}
+        if (document.getElementsByClassName("errorLogContainterError").length !== 0) {
+            document.getElementsByClassName("errorLogContainterError")[0].className = "errorLogContainterEmpty";    
+            document.getElementsByClassName("errorLogContainterEmpty")[0].childNodes[0].remove();
+        }
         $scope.lineitem.entryError = "";
+        //response if variant good
     });
 
     $scope.$watch("lineitem.entryError", function (newval) {
@@ -137,8 +150,6 @@ function AddToCartPreviewCtrl($scope, $location, AddToCartPreview, $timeout) {
             $scope.lineitem.entryError = "";
         }, 5000)
     });
-
-
 
     //action functions
     $scope.saveVariant = function(lineitem) {
