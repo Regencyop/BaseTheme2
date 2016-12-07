@@ -53,20 +53,20 @@
                                  -->
                                  <div>
                                      <h3  class="text-primary">
-                                         {{item.ProductIDText}}
+                                         {{item.Product.Name}}
                                      </h3>
                                      <p>
-                                         {{item.Product.Name}}
+                                         {{item.ProductIDText}}
                                      </p>
                                  <!--a-->
                                  </div>
                              </div>
                              <div  class="col-md-6"  ng-if="currentOrder.Status  ==  'AwaitingApproval'">
                                  <h3  class="text-primary">
-                                     {{item.ProductIDText}}
+                                     {{item.Product.Name}}
                                  </h3>
                                  <p>
-                                     {{item.Product.Name}}
+                                     {{item.ProductIDText}}
                                  </p>
                              </div>
                              <div  class="col-md-6">
