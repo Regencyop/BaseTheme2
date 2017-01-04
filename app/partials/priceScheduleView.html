@@ -1,13 +1,13 @@
 <section>
-    <div class="panel-body" ng-show="ps.PriceBreaks.length > 5">
+    <div class="panel-body" ng-show="ps.PriceBreaks.length > 9">
         <button id="451qa_btn_showhide_psched" class="btn btn-default btn-block" type="button"  ng-init="showPS = false" ng-click="showPS = !showPS">
             {{'Price Schedule' | r | xlat}}
             <i class="fa fa-caret-up" ng-show="showPS"></i>
             <i class="fa fa-caret-down" ng-show="!showPS"></i>
         </button>
     </div>
-    <div id="451qa_list_pric_schd" class="panel-table" ng-show="ps && p && showPS || ps.PriceBreaks.length <= 5">
-        <div class="row" ng-hide="ps.PriceBreaks.length > 5">
+    <div id="451qa_list_pric_schd" class="panel-table" ng-show="ps && p && showPS || ps.PriceBreaks.length <= 9">
+        <div class="row" ng-hide="ps.PriceBreaks.length > 9">
             <div class="col-xs-12">
                 <h4>
                     {{'Price Schedule' | r | xlat}}
