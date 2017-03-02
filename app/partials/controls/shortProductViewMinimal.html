@@ -14,7 +14,7 @@
             <h3 class="text-center navColors">{{LineItem.Product.Name}}</h3>
             <div>
                 <p ng-bind-html="trustedDescription(LineItem.Product)" ng-show="LineItem.Product.Description" />
-        <!--        <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
+               <p ng-show="LineItem.PriceSchedule.PriceBreaks[0]" ng-if="!(user.Permissions.contains('HidePricing'))">
                     {{LineItem.PriceSchedule.PriceBreaks[0].Quantity}}
                     <span ng-show="LineItem.Product.QuantityMultiplier > 1">(x {{LineItem.Product.QuantityMultiplier}})</span>
                     <span>{{'for' | xlat}} {{LineItem.PriceSchedule.PriceBreaks[0].Price | culturecurrency}}</span>
@@ -27,7 +27,6 @@
                 <p ng-show="LineItem.Product.DisplayInventory && inventoryDisplay(LineItem.Product, LineItem.Variant) != undefined">
                     {{'Quantity Available' | r | xlat}}: {{inventoryDisplay(LineItem.Product, LineItem.Variant) }}
                 </p>
-                -->
             </div>
             <br/>
             <a class="btn btn-default btn-block" href="product/{{LineItem.Product.InteropID}}">{{('View' | r) + ' ' + ('Product' | r) | xlat}}</a>
