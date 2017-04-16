@@ -1571,7 +1571,11 @@ fieldset[disabled] .btn-link:focus {
   background-color: #080808;
   color: #ffffff;
 }
-
+.navbar,
+.navbar-default,
+.navbar-fixed-top, {
+	border: none;
+}
 
 
 .jumbotron {
@@ -1980,6 +1984,10 @@ fieldset[disabled] .btn-link:focus {
 .panel-danger > .panel-footer + .panel-collapse .panel-order-shipping-multiple {
   border-bottom-color: #ebccd1;
 }
+.panel-category-list,
+.panel-category-list:not(.no-panels) {
+	padding: 0;
+}
 .well {
   min-height: 20px;
   padding: 19px;
@@ -2289,10 +2297,6 @@ fieldset[disabled] .btn-link:focus {
   margin: 0;
   max-height: 100%;
 }
-.jumbotron h2 img {
-  max-height: 75px;
-  max-width: auto;
-}
 .jumbotron h2 span {
   display: block;
   clear: left;
@@ -2333,7 +2337,7 @@ fieldset[disabled] .btn-link:focus {
 }
 .thumbnail img {
   max-height: 225px;
-  min-height: 100px;
+  min-height: 0px;
   max-width: 100%;
   margin: 0 auto 15px;
 }
@@ -2590,10 +2594,10 @@ fieldset[disabled] .btn-link:focus {
 		background-color: rgba(255,255,255,1);
 		float: left;
 	}
-	/* companyImage -- BB*/
 	.jumbotron h2 img {
-	max-height: 100%;
-    	background-color: white;
+	max-height: 100px;
+	max-width: auto;
+    	background-color: transparent;
     }
 	
 	.jumbotron .container h2.thumbnail span {
@@ -2648,17 +2652,20 @@ fieldset[disabled] .btn-link:focus {
 	.panel-category-list ul li .well {
 		min-height: 0;
 		padding: 0;
+		margin: 4px 9px;
 	}
 	.panel-category-list ul li a {
 		padding: 0;
 	}
 	.panel-category-list ul li a img {
 		margin: 0 auto;
-		min-height: 225px;
+		min-height: 0;
+		max-height: 225px;
 		/* width: 305px recommended for category images */
 	}
 	.panel-category-list ul li .well h5 {
-		font-size: 1.5em;
+		font-size: 17px;
+		font-weight: 700;
 	}
 	
 /* Begin Colors --All-- (largeScreen)*/
@@ -2684,27 +2691,15 @@ fieldset[disabled] .btn-link:focus {
     background-color: #0e0e0e;
 }
 
-.navbar-default .navbar-nav > .active > a:focus{
+.navbar-default .navbar-nav > .active > a:focus {
     background-color: #3a3b3b;
 }
 
-.container .navbar-nav li a { 
-    background-color: #0e0e0e;
-    color: white;
-}
-
-.container .navbar-nav li a:hover { 
-    background-color: #3a3b3b;
-    color: white;
-}
-
-.container .navbar-nav li a:active { 
-    background-color: #3a3b3b;
-    color: white;
-}
-
+.container .navbar-nav li a,
+.container .navbar-nav li a:hover,
+.container .navbar-nav li a:active,
 .container .navbar-nav li a:focus { 
-    background-color: #3a3b3b;
+    background-color: transparent;
     color: white;
 }
 
