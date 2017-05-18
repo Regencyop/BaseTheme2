@@ -2928,7 +2928,11 @@ font-weight: bold;
 }
 */
 
-
+.product-image-large {
+  margin: 0 auto;
+  max-height: 600px;
+  max-width: 100%;
+}
 
     .imagePreviewTwoColumn {
         margin: 0 auto;
