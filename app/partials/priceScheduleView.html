@@ -41,7 +41,8 @@
                     <span ng-show="$last && !ps.MaxQuantity"> +</span>
                 </span>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-6" ng-if="!(user.Permissions.contains('HidePricing'))">
+                <span ng-show="pb.Price == ''">$0.00</span>
                 {{pb.Price * (ps.RestrictedQuantity ? pb.Quantity : 1)| culturecurrency}}
             </div>
         </div>
