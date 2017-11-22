@@ -7,8 +7,10 @@ html {
 
 body {
     margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
+    color: #333333;
 }
 
 img {
@@ -3060,6 +3062,83 @@ font-weight: bold;
     }
     
 
+/* Recent Updates (11/2017) */
+	
+    productlightbox .panel-footer {
+	background: transparent;
+	border: none;
+    }    
+    
+    .panel-lineitem a {
+        padding: 0;
+        margin-bottom: -5px;
+    }
+    
+    .spec-group-item {
+        position: relative;
+        margin-bottom: -4px;
+        border: none;
+    }
+
+    .spec {
+        font-size: 12px;
+        font-weight: 400;
+        color: #000 !important;
+        line-height: 12px;
+    }
+
+    .Weight, .ProductImage, .VibeItemID {
+        display: none !important;
+    }
+
+    ul.rslides {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-height: 400px;
+        overflow: hidden;
+    }
+
+    .rslides {
+        position: relative;
+        list-style: none;
+        min-height: 100%;
+        padding: 0;
+        margin: 0 -5px;
+    }
+
+    /* right side of line item */
+    
+    .deleteItem {
+        background-color: #F00 !important;
+        border: none !important;
+    }
+    
+    .deleteItem:hover {
+        background-color: #D00 !important;
+        border: none !important;
+    }
+
+    /* this controls the cart button colors and their hover states */
+    
+    .cancelColor, .saveColor {
+        background-color: #888 !important;
+        color: white !important;
+    }
+    
+    .cancelColor:hover, .saveColor:hover {
+        background-color: #555 !important;
+    }
+
+    .submitColor {
+        background-color: #555 !important;
+        color: white !important;
+    }
+    
+    .submitColor:hover {
+        background-color: #222 !important;
+    }
+    
 
 
 
