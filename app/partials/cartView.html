@@ -2,7 +2,7 @@
      <div  ng-show="currentOrder" class="hidden-print cartHeader">
          <nav  class="nav  backgroundControl">
              <ul>
-                 <li><span  class="cartTitle  colorControlNoBackground">{{'Cart'  |  r  |  xlat}}</span></li>
+                 <li><span  class="cartTitle  colorControlNoBackground">{{'Shopping Cart'  |  r  |  xlat}}</span></li>
                  <li  class="pull-right"  ng-click="onPrint()"><span><i  class="fa  fa-print  text-primary"  rel="tooltip"  title="{{'Print'  |  r  |  xlat}}"  ></i></span></li>
              </ul>
          </nav>
@@ -16,11 +16,6 @@
                  <cartmessage  />
              </div>
              <div  class="panel  panel-default">
-                 <div  class="panel-heading">
-                     <h3  class="panel-title">
-                         {{currentOrder.LineItems.length}}  {{'item'  +  (currentOrder.LineItems.length  >  1  ?  's'  :  '')  |  rl  |  xlat}}  {{'in  your'  |  rl  |  xlat:(currentOrder.LineItems.length)}}  {{'cart'  |  rl  |  xlat}}
-                     </h3>
-                 </div>
                  <div  class="panel-lineitem"  ng-repeat="item  in  currentOrder.LineItems">
                     <button  type="button"  title="Remove  Item"  class="btn  btn-danger  deleteItem" ng-hide="item.Product.InteropID == '40849DC'" ng-click="removeItem(item)">
                          <span  class="fa  fa-minus-circle  fa-inverse"></span>
@@ -35,39 +30,49 @@
                                      <small>{{'Total  Quantity'  |  r  |  xlat}}  <span  ng-show="item.Quantity  *  item.Product.QuantityMultiplier">{{item.Quantity  *  item.Product.QuantityMultiplier}}</span></small>
                                  </p>
                              </div>
-                             <div  class="col-xs-6  col-sm-12  col-md-6  thumbnail"  ng-show="item.Product.LargeImageUrl">
-                                 <figure>
-                                     <img  ng-src="{{item.Product.LargeImageUrl}}"  />
-                                 </figure>
+                             <div  class="col-xs-6  thumbnail"  ng-show="item.Variant.LargeImageUrl || item.Product.SmallImageUrl">
+                                 <a  ng-href="cart/{{item.Product.InteropID}}/{{$index}}">
+	                             <figure>
+	                                 <img ng-src="{{item.Variant.LargeImageUrl || item.Product.SmallImageUrl}}" />
+	                             </figure>
+				 </a>
                              </div>
                          </div>
                      </div>
                      <div  class="col-sm-9">
                          <div  class="row">
                              <div  class="col-md-6"  ng-if="currentOrder.Status  !=  'AwaitingApproval'">
-                                 <!--
-                                 Removed link for better UX
+<!-- Removed link for better UX
                                  <a  ng-href="cart/{{item.Product.InteropID}}/{{$index}}">
                                  removed  from  h3  above  item.productIDText
                                  <i  class="fa  fa-edit"></i>
-                                 -->
+ -->
                                  <div>
                                      <h3  class="text-primary">
                                          {{item.Product.Name}}
                                      </h3>
+<!-- Hide Product ID 
                                      <p>
                                          {{item.ProductIDText}}
                                      </p>
+ -->
                                  <!--a-->
+                                     <h6 ng-repeat="spec in item.Specs | filter:{'CanSetForLineItem':true} " class="spec-group-item">
+                                         <span class="spec {{spec.Label}}">{{spec.Label || spec.Name}}: </span>
+                                         <span ng-if="spec.ControlType == 'File'" class="spec {{spec.Label}}"><a ng-href="{{spec.File.Url}}">{{spec.File.OriginalName + Extension}}</a></span>
+                                         <span ng-if="spec.ControlType != 'File'" class="spec {{spec.Label}}">{{spec.Value || ('(unspecified)' | xlat)}}</span><br />
+                                     </h6>
                                  </div>
                              </div>
                              <div  class="col-md-6"  ng-if="currentOrder.Status  ==  'AwaitingApproval'">
                                  <h3  class="text-primary">
                                      {{item.Product.Name}}
                                  </h3>
+<!-- Hide Product ID 
                                  <p>
                                      {{item.ProductIDText}}
                                  </p>
+ -->
                              </div>
                              <div  class="col-md-6">
                                  <div  class="row">
