@@ -14,31 +14,36 @@
                 <span class="text-info">
                     {{'Quantity' | r | xlat}}
                 </span>
-                <span ng-show="p.QuantityMultiplier > 1 && !ps.RestrictedQuantity">
+<!-- Hide Per Amount                <span ng-show="p.QuantityMultiplier > 1 && !ps.RestrictedQuantity">
                     (x {{p.QuantityMultiplier}})
                 </span>
+-->
             </div>
             <div class="col-xs-6">
                 <span class="text-info">
                     {{'Price' | r | xlat}}
                 </span>
-                <span ng-show="p.QuantityMultiplier > 1 && !ps.RestrictedQuantity" >
+<!-- Hide Per Qty                <span ng-show="p.QuantityMultiplier > 1 && !ps.RestrictedQuantity" >
                     (per {{p.QuantityMultiplier}})
                 </span>
+-->
             </div>
         </div>
         <div class="451qa_list_pricebreaks row" ng-repeat="pb in ps.PriceBreaks">
             <div class="col-xs-6">
-                {{pb.Quantity * (ps.RestrictedQuantity ? p.QuantityMultiplier : 1)}}
+                {{pb.Quantity * (ps.RestrictedQuantity ? p.QuantityMultiplier : 1) * (p.QuantityMultiplier)}}
                 <span ng-show="!ps.RestrictedQuantity">
-                    <span ng-show="ps.PriceBreaks[$index + 1].Quantity"> - {{ ps.PriceBreaks[$index + 1].Quantity - 1  }}</span>
-                    <span ng-show="$last && ps.MaxQuantity"> - {{ps.MaxQuantity}}</span>
+                    <span ng-show="ps.PriceBreaks[$index + 1].Quantity"> - {{ ps.PriceBreaks[$index + 1].Quantity - 1  * (p.QuantityMultiplier)}}</span>
+                    <span ng-show="$last && ps.MaxQuantity"> - {{ps.MaxQuantity * (p.QuantityMultiplier)}}</span>
                     <span ng-show="$last && !ps.MaxQuantity"> +</span>
                 </span>
             </div>
             <div class="col-xs-6" ng-if="!(user.Permissions.contains('HidePricing'))">
                 <span ng-show="pb.Price == ''">$0.00</span>
                 {{pb.Price * (ps.RestrictedQuantity ? pb.Quantity : 1)| culturecurrency}}
+                <span ng-show="p.QuantityMultiplier > 1 && !ps.RestrictedQuantity" >
+                    (per {{p.QuantityMultiplier}})
+                </span>
             </div>
         </div>
     </div>
