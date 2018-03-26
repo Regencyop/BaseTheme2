@@ -31,7 +31,7 @@
         </div>
         <div class="451qa_list_pricebreaks row" ng-repeat="pb in ps.PriceBreaks">
             <div class="col-xs-6">
-                {{pb.Quantity * (ps.RestrictedQuantity ? p.QuantityMultiplier : 1) * (p.QuantityMultiplier)}}
+                {{pb.Quantity * (ps.RestrictedQuantity ? p.QuantityMultiplier : 1)}}
                 <span ng-show="!ps.RestrictedQuantity">
                     <span ng-show="ps.PriceBreaks[$index + 1].Quantity"> - {{(ps.PriceBreaks[$index + 1].Quantity - 1)  * (p.QuantityMultiplier)}}</span>
                     <span ng-show="$last && ps.MaxQuantity"> - {{ps.MaxQuantity * (p.QuantityMultiplier)}}</span>
