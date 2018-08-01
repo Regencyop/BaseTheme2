@@ -23,7 +23,7 @@ function addtocartpreview() {
         return [
             '<style>',
             '.cart-preview .panel {margin-top:10px;}',
-            '.btn.btn-lg {z-index: 999999999;}',
+            '.btn.btn-lg {z-index: 999;}',
             '.panel-lineitem {margin:3px; padding: 0 3px; overflow:hidden; border:0.5px solid #dddddd; width: 100%;}',
             '.section-top {overflow:hidden}',
             '.section-top input {border:1px solid #dddddd; text-align:center; border-bottom: none; padding:0;}',
