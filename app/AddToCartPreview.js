@@ -47,7 +47,7 @@ function addtocartpreview() {
             '.btn-default {margin-bottom: 2px; padding: 2px 4px;}',
             '.has-error {background-color: #F2DEDE; color: #a94442}',
             '.panel div.alert {margin: 5px;}',
-            '.instruction {margin: 9px 0; text-align: center; color: #777;}',
+            '.instruction {margin: 9px 0; text-align: center; color: #777; font-family: sans-serif; font-size: 13px;}',
             '</style>',
             '<div class="cart-preview" id="451_btn_orderadd">',
             '<div class="row">',
