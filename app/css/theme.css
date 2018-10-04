@@ -2934,6 +2934,23 @@ font-weight: bold;
 .product-variants a:hover {
     background-color: #999;
 
+	.product-variants {
+	    padding-left: 0 !important;
+	}
+	
+	.product-variants a {
+	    display: inline-block !important;
+	    width: 83.3333333%;
+	}
+	
+	.product-variants a:before {
+	    display: none;
+	}
+	
+	div.delete {
+	    float: right !important;
+	}
+
 @media (min-width: 768px) {
     .container,
     .container-view {
