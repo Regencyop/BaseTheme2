@@ -13,6 +13,7 @@ function ($scope, $route, $location, $451, Punchout, User, Order, Security, Orde
 	    //get user Data
     User.get(function (user, data) {
         $scope.userData = user;
+	groupName = $scope.groupName = user.Groups[0].Name;
     });
 
 	//get companyId
