@@ -3119,7 +3119,7 @@ font-weight: bold;
         line-height: 12px;
     }
 
-    .Weight, .ProductImage, .VibeItemID, .fa-edit, .hidden {
+    .Weight, .ProductImage, .VibeItemID, .fa-edit, .hidden, .keyword {
         display: none !important;
     }
 
