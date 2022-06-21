@@ -83,8 +83,13 @@ a:focus {
 
 
 
-
-
+.warning {
+  color: #d00;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
 
 .text-primary {
   color: #676767;
