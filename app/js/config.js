@@ -14,7 +14,7 @@ four51.app.config(['$provide', function($provide) {
 			        catch (x) {
 			           
 			         if ((JSON.stringify(ex).indexOf("Inactive Product")) && (document.getElementById("451_btn_orderadd").length !== 0)) {
-			                $( "<div class='errorLogContainterError'><p>This size currently out of stock.</p></div>" ).insertAfter( "#451_btn_orderadd" );
+			                $( "<div class='errorLogContainterError warning'><p>This option is currently not available.</p></div>" ).insertAfter( "#451_btn_orderadd" );
                         }
                         $( document ).on( "click", function() {
                             $(  "div.errorLogContainterError"  ).remove();
